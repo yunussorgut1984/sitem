@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Arial, Helvetica, sans-serif">
+  <defs><clipPath id="c"><rect width="480" height="320" rx="12"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="480" height="320" fill="#FAFAF7"/>
+    <rect width="480" height="30" fill="#ECEBE6"/>
+    <circle cx="18" cy="15" r="5" fill="#FF5F57"/><circle cx="34" cy="15" r="5" fill="#FEBC2E"/><circle cx="50" cy="15" r="5" fill="#28C840"/>
+    <rect x="90" y="7" width="300" height="16" rx="8" fill="#fff"/>
+    <text x="104" y="19" font-size="9" fill="#888">kitapcim.com.tr</text>
+    <!-- üst bar -->
+    <text x="28" y="62" font-size="18" font-weight="700" fill="#14532D" font-family="Georgia, serif">Kitapçım</text>
+    <rect x="140" y="46" width="230" height="24" rx="12" fill="#fff" stroke="#D6D3CB"/>
+    <text x="156" y="62" font-size="10" fill="#A8A29E">Kitap, yazar ara...</text>
+    <circle cx="356" cy="58" r="6" fill="none" stroke="#14532D" stroke-width="2"/>
+    <path d="M410 50h4l4 14h18l3-10h-23" fill="none" stroke="#14532D" stroke-width="2.5" stroke-linejoin="round"/>
+    <circle cx="422" cy="68" r="2.5" fill="#14532D"/><circle cx="434" cy="68" r="2.5" fill="#14532D"/>
+    <circle cx="442" cy="48" r="7" fill="#EAB308"/><text x="442" y="51.5" font-size="9" text-anchor="middle" font-weight="700" fill="#14532D">3</text>
+    <!-- banner -->
+    <rect x="28" y="84" width="424" height="76" rx="10" fill="#14532D"/>
+    <text x="48" y="116" font-size="18" font-weight="700" fill="#fff">Kış Okuma Kampanyası</text>
+    <text x="48" y="138" font-size="12" fill="#BBF7D0">Seçili kitaplarda %30 indirim</text>
+    <rect x="352" y="104" width="30" height="44" rx="3" fill="#EAB308" transform="rotate(-10 367 126)"/>
+    <rect x="384" y="100" width="30" height="48" rx="3" fill="#F87171"/>
+    <!-- ürünler -->
+    <g>
+      <rect x="28" y="176" width="96" height="128" rx="8" fill="#fff"/>
+      <rect x="137" y="176" width="96" height="128" rx="8" fill="#fff"/>
+      <rect x="246" y="176" width="96" height="128" rx="8" fill="#fff"/>
+      <rect x="355" y="176" width="96" height="128" rx="8" fill="#fff"/>
+      <rect x="48" y="186" width="56" height="74" rx="3" fill="#60A5FA"/>
+      <rect x="157" y="186" width="56" height="74" rx="3" fill="#F472B6"/>
+      <rect x="266" y="186" width="56" height="74" rx="3" fill="#34D399"/>
+      <rect x="375" y="186" width="56" height="74" rx="3" fill="#FBBF24"/>
+      <rect x="40" y="270" width="64" height="6" rx="3" fill="#D6D3CB"/><rect x="149" y="270" width="64" height="6" rx="3" fill="#D6D3CB"/><rect x="258" y="270" width="64" height="6" rx="3" fill="#D6D3CB"/><rect x="367" y="270" width="64" height="6" rx="3" fill="#D6D3CB"/>
+      <text x="40" y="294" font-size="11" font-weight="700" fill="#14532D">₺145</text><text x="149" y="294" font-size="11" font-weight="700" fill="#14532D">₺210</text><text x="258" y="294" font-size="11" font-weight="700" fill="#14532D">₺98</text><text x="367" y="294" font-size="11" font-weight="700" fill="#14532D">₺175</text>
+    </g>
+  </g>
+</svg>

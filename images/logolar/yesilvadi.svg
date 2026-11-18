@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <circle cx="196" cy="48" r="16" fill="#FFC94D"/>
+  <path d="M100 118q30-56 70-30 30-34 60 30Z" fill="#7CB342"/>
+  <path d="M100 118q40-30 80-6t40 6Z" fill="#388E3C"/>
+  <path d="M146 76c-6-26 10-44 34-46-2 26-16 42-34 46Z" fill="#43A047"/>
+  <path d="M146 76q12-20 30-40" fill="none" stroke="#E8F5E9" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="160" y="160" text-anchor="middle" font-family="'Trebuchet MS', Arial, sans-serif" font-size="32" font-weight="700" fill="#2E7D32">yeşilvadi</text>
+  <text x="160" y="184" text-anchor="middle" font-family="'Trebuchet MS', Arial, sans-serif" font-size="12" fill="#7CB342" letter-spacing="6">ORGANİK</text>
+</svg>

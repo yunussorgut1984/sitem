@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <circle cx="160" cy="70" r="52" fill="#FFF4E6" stroke="#C77B30" stroke-width="3"/>
+  <g fill="#C77B30">
+    <rect x="158" y="40" width="4" height="72" rx="2"/>
+    <ellipse cx="160" cy="34" rx="7" ry="13"/>
+    <ellipse cx="149" cy="52" rx="7" ry="14" transform="rotate(-30 149 52)"/>
+    <ellipse cx="171" cy="52" rx="7" ry="14" transform="rotate(30 171 52)"/>
+    <ellipse cx="149" cy="72" rx="7" ry="14" transform="rotate(-30 149 72)"/>
+    <ellipse cx="171" cy="72" rx="7" ry="14" transform="rotate(30 171 72)"/>
+    <ellipse cx="149" cy="92" rx="7" ry="14" transform="rotate(-30 149 92)"/>
+    <ellipse cx="171" cy="92" rx="7" ry="14" transform="rotate(30 171 92)"/>
+  </g>
+  <text x="160" y="160" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" fill="#7A4A1E" letter-spacing="3">EGE FIRIN</text>
+  <text x="160" y="184" text-anchor="middle" font-family="Georgia, serif" font-size="13" font-style="italic" fill="#C77B30">1978'den beri taze lezzet</text>
+</svg>

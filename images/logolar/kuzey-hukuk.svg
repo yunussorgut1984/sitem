@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <g fill="none" stroke="#B8924A" stroke-width="3" stroke-linecap="round">
+    <path d="M160 36v78M112 50h96M120 50l-14 34M120 50l14 34M200 50l-14 34M200 50l14 34"/>
+  </g>
+  <path d="M102 84q18 18 36 0Z" fill="#B8924A"/>
+  <path d="M182 84q18 18 36 0Z" fill="#B8924A"/>
+  <path d="M160 18l5 10h-10Z" fill="#1F2A44"/>
+  <rect x="140" y="112" width="40" height="8" rx="2" fill="#1F2A44"/>
+  <text x="160" y="160" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#1F2A44" letter-spacing="10">KUZEY</text>
+  <rect x="96" y="170" width="128" height="1.5" fill="#B8924A"/>
+  <text x="160" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#1F2A44" letter-spacing="4">HUKUK BÜROSU</text>
+</svg>

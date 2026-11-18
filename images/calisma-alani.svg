@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" width="480" height="360">
+  <rect width="480" height="360" rx="24" fill="#F2F8FF"/>
+  <circle cx="400" cy="70" r="40" fill="#D6E9FF"/>
+  <!-- masa -->
+  <rect x="40" y="280" width="400" height="14" rx="7" fill="#9CC5F5"/>
+  <rect x="70" y="294" width="12" height="50" fill="#9CC5F5"/>
+  <rect x="398" y="294" width="12" height="50" fill="#9CC5F5"/>
+  <!-- monitör -->
+  <rect x="120" y="70" width="240" height="160" rx="12" fill="#1C2B45"/>
+  <rect x="130" y="80" width="220" height="140" rx="6" fill="#fff"/>
+  <rect x="140" y="90" width="200" height="16" rx="4" fill="#D6E9FF"/>
+  <rect x="140" y="116" width="96" height="10" rx="5" fill="#2F7BD9"/>
+  <rect x="140" y="132" width="80" height="6" rx="3" fill="#C9D6E8"/>
+  <rect x="140" y="144" width="70" height="6" rx="3" fill="#C9D6E8"/>
+  <rect x="140" y="162" width="50" height="16" rx="8" fill="#FF8A6B"/>
+  <circle cx="295" cy="150" r="34" fill="#D6E9FF"/>
+  <path d="M295 126c0 0-18 20-18 32a18 18 0 0 0 36 0c0-12-18-32-18-32Z" fill="#2F7BD9"/>
+  <rect x="140" y="194" width="200" height="16" rx="4" fill="#F2F8FF"/>
+  <rect x="226" y="230" width="28" height="36" fill="#1C2B45"/>
+  <rect x="196" y="264" width="88" height="16" rx="6" fill="#1C2B45"/>
+  <!-- bitki -->
+  <rect x="62" y="240" width="40" height="40" rx="8" fill="#FF8A6B"/>
+  <path d="M82 240c-20-20-24-50-8-62 6 22 10 40 8 62Z" fill="#4CAF7A"/>
+  <path d="M82 240c18-22 30-44 14-62-10 22-14 40-14 62Z" fill="#6CC593"/>
+  <!-- kupa -->
+  <rect x="380" y="246" width="34" height="34" rx="6" fill="#fff" stroke="#2F7BD9" stroke-width="4"/>
+  <path d="M414 254h8a8 8 0 0 1 0 16h-8" fill="none" stroke="#2F7BD9" stroke-width="4"/>
+  <path d="M390 236q4-8 0-16M404 236q4-8 0-16" fill="none" stroke="#9CC5F5" stroke-width="3" stroke-linecap="round"/>
+  <!-- tablet ve kalem -->
+  <rect x="300" y="262" width="64" height="18" rx="4" fill="#fff" stroke="#9CC5F5" stroke-width="3"/>
+  <path d="M310 271h30" stroke="#2F7BD9" stroke-width="3" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <circle cx="160" cy="72" r="54" fill="#E3F2FF"/>
+  <path d="M157 26v74h-44Z" fill="#1E88E5"/>
+  <path d="M164 40v60h36Z" fill="#64B5F6"/>
+  <path d="M108 106h104l-14 16h-76Z" fill="#0D47A1"/>
+  <path d="M112 132q12-8 24 0t24 0 24 0 24 0" fill="none" stroke="#1E88E5" stroke-width="4" stroke-linecap="round"/>
+  <text x="160" y="166" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#0D47A1">MAVİ YELKEN</text>
+  <text x="160" y="188" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1E88E5" letter-spacing="8">TURİZM</text>
+</svg>

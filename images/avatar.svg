@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <clipPath id="daire"><circle cx="200" cy="200" r="200"/></clipPath>
+    <linearGradient id="zemin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E4F1FF"/>
+      <stop offset="1" stop-color="#C4DFFF"/>
+    </linearGradient>
+  </defs>
+  <g clip-path="url(#daire)">
+    <rect width="400" height="400" fill="url(#zemin)"/>
+    <circle cx="320" cy="90" r="36" fill="#fff" opacity=".6"/>
+    <circle cx="70" cy="130" r="18" fill="#fff" opacity=".5"/>
+    <!-- gövde -->
+    <path d="M80 400c0-78 52-112 120-112s120 34 120 112Z" fill="#2F7BD9"/>
+    <path d="M172 290l28 38 28-38Z" fill="#fff"/>
+    <rect x="180" y="238" width="40" height="62" rx="14" fill="#EDBB95"/>
+    <!-- kulaklar ve baş -->
+    <ellipse cx="139" cy="196" rx="11" ry="15" fill="#EDBB95"/>
+    <ellipse cx="261" cy="196" rx="11" ry="15" fill="#EDBB95"/>
+    <ellipse cx="200" cy="190" rx="62" ry="72" fill="#F6CFAB"/>
+    <!-- saç -->
+    <path d="M136 192c-10-70 30-96 68-94 46 2 70 34 60 94-6-30-26-54-64-54-36 0-56 22-64 54Z" fill="#3B2A25"/>
+    <!-- gözlük -->
+    <g fill="none" stroke="#1C2B45" stroke-width="4">
+      <rect x="156" y="176" width="36" height="28" rx="9"/>
+      <rect x="208" y="176" width="36" height="28" rx="9"/>
+      <path d="M192 188h16"/>
+    </g>
+    <circle cx="174" cy="190" r="4.5" fill="#1C2B45"/>
+    <circle cx="226" cy="190" r="4.5" fill="#1C2B45"/>
+    <!-- yanak ve gülümseme -->
+    <circle cx="160" cy="220" r="9" fill="#FF8A6B" opacity=".25"/>
+    <circle cx="240" cy="220" r="9" fill="#FF8A6B" opacity=".25"/>
+    <path d="M182 226q18 16 36 0" fill="none" stroke="#1C2B45" stroke-width="4" stroke-linecap="round"/>
+    <!-- kalem rozeti -->
+    <circle cx="262" cy="345" r="20" fill="#fff"/>
+    <path d="M253 354l3-10 14-14 7 7-14 14Z" fill="#FF8A6B"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="damla" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7DBCFF"/>
+      <stop offset="1" stop-color="#2F7BD9"/>
+    </linearGradient>
+  </defs>
+  <path d="M24 3C24 3 8 20.5 8 31a16 16 0 0 0 32 0C40 20.5 24 3 24 3Z" fill="url(#damla)"/>
+  <path d="M19 22v17l4.5-4 3 6.5 3-1.4-2.9-6.3h6Z" fill="#fff"/>
+</svg>

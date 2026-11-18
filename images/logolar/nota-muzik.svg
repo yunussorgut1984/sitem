@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" width="320" height="200">
+  <circle cx="160" cy="70" r="54" fill="none" stroke="#D1C4E9" stroke-width="3"/>
+  <circle cx="160" cy="70" r="42" fill="#EDE7F6"/>
+  <ellipse cx="150" cy="92" rx="15" ry="11" transform="rotate(-20 150 92)" fill="#7E57C2"/>
+  <rect x="161" y="36" width="5" height="58" fill="#7E57C2"/>
+  <path d="M166 36c14 4 22 14 18 30-2-10-8-14-18-16Z" fill="#7E57C2"/>
+  <text x="160" y="164" text-anchor="middle" font-family="'Trebuchet MS', Arial, sans-serif" font-size="34" font-weight="700" fill="#5E35B1">nota</text>
+  <text x="160" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#7E57C2" letter-spacing="5">MÜZİK OKULU</text>
+</svg>

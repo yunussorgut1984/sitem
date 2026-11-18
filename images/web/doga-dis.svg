@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Arial, Helvetica, sans-serif">
+  <defs><clipPath id="c"><rect width="480" height="320" rx="12"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="480" height="320" fill="#F0FBF9"/>
+    <rect width="480" height="30" fill="#E6EEEC"/>
+    <circle cx="18" cy="15" r="5" fill="#FF5F57"/><circle cx="34" cy="15" r="5" fill="#FEBC2E"/><circle cx="50" cy="15" r="5" fill="#28C840"/>
+    <rect x="90" y="7" width="300" height="16" rx="8" fill="#fff"/>
+    <text x="104" y="19" font-size="9" fill="#7C8C89">dogadisklinigi.com</text>
+    <path d="M36 46c-6 0-9 5-8 11 1 5 3 12 6 12 2 0 2-6 4-6s2 6 4 6c3 0 5-7 6-12 1-6-2-11-8-11-2 0-2 1-4 1s-2-1-4-1Z" fill="#14B8A6"/>
+    <text x="54" y="62" font-size="14" font-weight="700" fill="#0F766E">Doğa Diş</text>
+    <rect x="270" y="52" width="34" height="6" rx="3" fill="#B6E3DC"/><rect x="314" y="52" width="34" height="6" rx="3" fill="#B6E3DC"/>
+    <rect x="364" y="44" width="88" height="22" rx="11" fill="#14B8A6"/>
+    <text x="408" y="59" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">0232 000 00 00</text>
+    <text x="28" y="114" font-size="26" font-weight="700" fill="#134E4A">Sağlıklı</text>
+    <text x="28" y="144" font-size="26" font-weight="700" fill="#14B8A6">gülüşler</text>
+    <rect x="28" y="160" width="170" height="7" rx="3.5" fill="#C8EAE4"/><rect x="28" y="174" width="140" height="7" rx="3.5" fill="#C8EAE4"/>
+    <!-- randevu formu -->
+    <rect x="28" y="196" width="200" height="104" rx="12" fill="#fff"/>
+    <text x="44" y="218" font-size="11" font-weight="700" fill="#134E4A">Online Randevu</text>
+    <rect x="44" y="228" width="168" height="18" rx="5" fill="#F0FBF9" stroke="#C8EAE4"/>
+    <rect x="44" y="252" width="168" height="18" rx="5" fill="#F0FBF9" stroke="#C8EAE4"/>
+    <rect x="44" y="276" width="168" height="16" rx="5" fill="#14B8A6"/>
+    <!-- diş illüstrasyonu -->
+    <circle cx="358" cy="180" r="90" fill="#CCFBF1"/>
+    <path d="M330 120c-22 0-34 18-30 42 4 24 10 66 26 66 10 0 10-30 20-30s10 30 20 30c16 0 22-42 26-66 4-24-8-42-30-42-8 0-10 4-16 4s-8-4-16-4Z" fill="#fff" stroke="#14B8A6" stroke-width="4"/>
+    <path d="M392 120l4-10 4 10 10 4-10 4-4 10-4-10-10-4Z" fill="#FBBF24"/>
+  </g>
+</svg>
