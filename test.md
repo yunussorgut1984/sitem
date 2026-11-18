@@ -1,0 +1,223 @@
+# Test Rehberi – Berrak Tasarım Stüdyosu
+
+Bu dosya, sitede yapılan her değişiklikten sonra neyin, nasıl kontrol edileceğini anlatır.
+Kısa yol: **Değişiklik küçükse → Bölüm 2. Büyük değişiklik veya yayın öncesi → hepsini uygula.**
+
+---
+
+## 1. Siteyi açma
+
+| Yöntem | Nasıl | Ne zaman |
+|---|---|---|
+| Çift tıklama | `index.html` dosyasına çift tıkla | Hızlı göz atma |
+| Yerel sunucu | Terminalde: `cd C:\EgitimClaudeProjeler\sitem` → `python -m http.server 8000` → tarayıcıda **http://localhost:8000** | Lighthouse ve gerçeğe yakın test |
+
+- Sunucuyu kapatmak için o terminalde **Ctrl+C**.
+- Değişiklik görünmüyorsa **Ctrl+F5** ile önbelleği temizleyerek yenile.
+- En temiz sonuç için **InPrivate penceresi** (Ctrl+Shift+N) kullan; tarayıcı eklentileri sonuçları bozabilir.
+
+---
+
+## 2. Hızlı kontrol listesi (her değişiklikten sonra, ~2 dakika)
+
+### Görünüm
+- [ ] Sayfa hatasız açılıyor, tasarım bozuk değil
+- [ ] Avatar, logo, 8 logo çalışması ve 6 web sitesi ön izlemesi görünüyor
+- [ ] Başlıklar **Shantell Sans** (el yazısı tarzı), metinler **Inter**
+- [ ] Türkçe harfler düzgün: **ğ ü ş ı ö ç İ Ğ Ü Ş Ö Ç** ve **₺**
+- [ ] Tarayıcı sekmesinde yeşil damla ikonu (favicon) var
+
+### Etkileşim
+- [ ] Üst menü linkleri ilgili bölüme yumuşakça kaydırıyor
+- [ ] Aşağı kaydırınca bölümler hafifçe beliriyor, rakamlar 0'dan sayıyor
+- [ ] Sağ altta **↑** butonu çıkıyor ve başa döndürüyor
+- [ ] Kartların üzerine gelince hafifçe yukarı kalkıyor
+- [ ] SSS soruları tıklayınca açılıp kapanıyor
+
+### İletişim formu
+- [ ] Boş gönderince 4 alanın altında da kırmızı hata mesajı çıkıyor
+- [ ] `abc` gibi hatalı e-postada "geçerli bir e-posta" uyarısı çıkıyor
+- [ ] Doğru doldurunca "Teşekkürler [ad]!" mesajı çıkıyor ve form temizleniyor
+
+### Konsol
+- [ ] **F12 → Console** sekmesinde kırmızı hata yok
+
+---
+
+## 3. Telefon ve tablet görünümü
+
+**F12 → Ctrl+Shift+M** ile cihaz görünümüne geç. Üstten şu cihazları seç:
+**iPhone SE (375px)**, **iPhone 12 Pro (390px)**, **iPad (768px)**.
+
+- [ ] Sayfa yana kaymıyor (yatay kaydırma çubuğu yok)
+- [ ] Menü **☰** düğmesine dönüşüyor; tıklayınca açılıyor, linke tıklayınca kapanıyor
+- [ ] Avatar en üstte, başlık altında
+- [ ] Kartlar alt alta (logolar telefonda 2'li) diziliyor
+- [ ] Yazılar okunabilir boyutta, butonlara parmakla rahat basılıyor
+- [ ] Form alanları ekrana sığıyor
+
+---
+
+## 4. CLAUDE.md kurallarının kontrolü
+
+Her HTML sayfasında şunlar **zorunlu**:
+
+- [ ] `<html lang="tr">`
+- [ ] `<meta name="viewport" ...>`
+- [ ] Sayfaya özgü `<title>`
+- [ ] Sayfaya özgü `<meta name="description" ...>`
+- [ ] Tüm `<img>` etiketlerinde açıklayıcı `alt` metni
+
+**Otomatik kontrol** (PowerShell'de, proje klasöründe çalıştır):
+
+```powershell
+Get-ChildItem -Filter *.html -Recurse | ForEach-Object {
+  $h = Get-Content $_.FullName -Raw -Encoding UTF8
+  $img = [regex]::Matches($h, '<img\b[^>]*>')
+  $altsiz = @($img | Where-Object { $_.Value -notmatch 'alt="[^"]+"' }).Count
+  "{0}: lang={1} viewport={2} title={3} description={4} | img={5} altsiz={6}" -f $_.Name,
+    ($h -match '<html lang="tr"'), ($h -match 'name="viewport"'), ($h -match '<title>'),
+    ($h -match 'name="description"'), $img.Count, $altsiz
+}
+```
+
+Beklenen sonuç: hepsi `True`, `altsiz=0`.
+
+---
+
+## 5. Erişilebilirlik (klavye ile gezinme)
+
+Fareyi bırak, sadece klavye kullan:
+
+- [ ] Sayfa açılınca ilk **Tab** → sol üstte "İçeriğe geç" linki görünüyor
+- [ ] **Tab** ile tüm link, buton ve form alanlarında sırayla dolaşılabiliyor
+- [ ] Odaklanılan öğenin etrafında belirgin (pembe) bir çerçeve var
+- [ ] Mobil menü açıkken **Esc** menüyü kapatıyor
+- [ ] SSS soruları **Enter** ile açılıyor
+
+**Hareket azaltma testi:** F12 → **Ctrl+Shift+P** → "Emulate CSS prefers-reduced-motion: reduce" yaz ve seç.
+- [ ] Animasyonlar (belirme, yüzen rozetler, sayan rakamlar) duruyor, içerik doğrudan görünüyor
+
+---
+
+## 6. Farklı tarayıcılar (yayın öncesi)
+
+- [ ] Microsoft Edge
+- [ ] Google Chrome
+- [ ] Mozilla Firefox
+- [ ] Telefonda Safari (iPhone) veya Chrome (Android) – site yayındaysa
+
+---
+
+## 7. Lighthouse ölçümü
+
+### Tarayıcıdan
+1. Sayfayı **yerel sunucu** ile aç (http://localhost:8000).
+   `file:///` ile açılan sayfada **"Analyze page load" butonu pasif olur.**
+2. **F12 → Lighthouse** sekmesi (görünmüyorsa **»** işaretine tıkla).
+3. Mode: **Navigation** · Categories: dördü de işaretli · Device: önce **Mobile**, sonra **Desktop**.
+4. **Analyze page load** → 20-30 saniye bekle.
+
+> En az bir kategori seçili değilse de buton pasif kalır.
+
+### Komut satırından (isteğe bağlı)
+```powershell
+$env:CHROME_PATH = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
+npx -y lighthouse@12.8.2 http://localhost:8000/ --view
+npx -y lighthouse@12.8.2 http://localhost:8000/ --preset=desktop --view
+```
+
+### Hedef puanlar
+
+| Kategori | Hedef | Alt sınır (altına düşerse incele) |
+|---|---|---|
+| Performance (masaüstü) | 100 | 95 |
+| Performance (mobil) | 90+ | 85 |
+| Accessibility | 100 | 95 |
+| Best Practices | 100 | 95 |
+| SEO | 100 | 95 |
+| CLS (zıplama) | 0 | 0.1 |
+| LCP (mobil) | ≤ 2.5 sn | 4 sn |
+
+> Not: localhost ölçümleri gerçek internetten daha iyi çıkar. Site yayına alınınca yayındaki adresle tekrar ölçülmeli.
+
+---
+
+## 8. Lighthouse geçmişi
+
+### Ölçüm tablosu
+
+| Tarih | Ortam | Perf. | Erişil. | En İyi Uyg. | SEO | CLS | LCP | Not |
+|---|---|---|---|---|---|---|---|---|
+| 19.11.2026 | Tarayıcı (kullanıcı ölçümü) | 95 | – | – | 100 | **0.124** ⚠️ | – | Google Fonts ile |
+| 19.11.2026 | Masaüstü (CLI) | 82 | – | – | – | **0.285** ⚠️ | 1.1 sn | Google Fonts ile |
+| 19.11.2026 | Mobil (CLI) | 81 | – | – | – | 0 | 3.7 sn | Google Fonts ile |
+| 19.11.2026 | **Masaüstü (CLI)** | **100** | **100** | **100** | **100** | **0** | 0.6 sn | Yazı tipleri siteye taşındıktan sonra |
+| 19.11.2026 | **Mobil (CLI)** | **94** | **100** | **100** | **100** | **0** | 2.9 sn | Yazı tipleri siteye taşındıktan sonra |
+
+### Görülen uyarılar ve çözümleri
+
+#### ✅ Çözüldü – Cumulative Layout Shift 0.124 / 0.285
+- **Uyarı:** *"Layout shifts occur when elements move absent any user interaction… such as … their fonts changing as the page loads"*
+- **Anlamı:** Sayfa yüklenirken içerik zıplıyordu.
+- **Sebep:** Başlık önce yedek yazı tipiyle (dar) çiziliyor, sonra geniş Shantell Sans gelince 2 satırdan 3 satıra çıkıyordu. Rakamlar bölümü aşağı itiliyordu. Lighthouse'daki neden: *"Web font loaded"*.
+- **Çözüm:** Yedek yazı tipi (Arial) ölçülerek Shantell Sans/Inter genişliğine ayarlandı (`size-adjust`). Ayarlar `css/style.css` başındaki "Yedek yazı tipleri" bölümünde.
+- **Sonuç:** CLS → **0**
+
+#### ✅ Çözüldü – Render blocking requests
+- **Uyarı:** *"Requests are blocking the page's initial render, which may delay LCP. Deferring or inlining can move these network requests out of the critical path."*
+- **Anlamı:** Bazı dosyalar gelmeden sayfa çizilmeye başlayamıyordu.
+- **Sebep:** Google Fonts dosyası iki ayrı sunucu üzerinden geliyordu. Gecikme mobilde 908 ms, masaüstünde 370 ms idi.
+- **Çözüm:** Yazı tipleri `fonts/` klasörüne indirildi, Google bağlantısı kaldırıldı, en önemli 2 dosyaya `preload` eklendi.
+- **Sonuç:** Google Fonts gecikmesi **yok**.
+
+#### ⏳ Kabul edildi – `css/style.css` render engelliyor (mobilde ~150 ms)
+- Her sitede olan normal bir durum. Çözümü (CSS'i HTML içine gömmek) bakımı zorlaştırır. Şimdilik dokunulmayacak.
+
+#### ⏳ İzleniyor – Mobil LCP 2.9 sn (hedef ≤ 2.5 sn)
+- En büyük öğe avatar resmi (`images/avatar-foto.jpg`). Resme `fetchpriority="high"` eklendi.
+- Ölçüm yavaş 4G simülasyonunda yapıldı. Site yayına alınınca gerçek değerle tekrar bakılmalı.
+
+> **Yeni ölçüm yapınca** yukarıdaki tabloya bir satır ekle. Yeni bir uyarı çıkarsa "Görülen uyarılar" altına not et.
+
+---
+
+## 9. Görsel ve dosya kontrolleri
+
+- [ ] Yeni eklenen fotoğraflar **sıkıştırılmış**: avatar gibi görseller 200 KB'ın altında
+- [ ] Yeni görsellerde `width` ve `height` yazılı (yoksa sayfa zıplar)
+- [ ] Sayfanın alt kısmındaki görsellerde `loading="lazy"` var
+- [ ] Dışarıdan alınan görsellerin **lisansı** kontrol edildi:
+  - Unsplash'te **"Free to use under the Unsplash License"** → kullanılabilir
+  - **"Unsplash+"** veya kilitli indirme butonu → ücretli, abonelik olmadan kullanılamaz
+- [ ] Gerekiyorsa görselin sahibine alt bilgide teşekkür notu eklendi
+
+### Mevcut dış kaynaklar ve lisansları
+
+| Kaynak | Kullanıldığı yer | Lisans |
+|---|---|---|
+| Artby Hensi – Unsplash illüstrasyonu | `images/avatar-foto.jpg` | Unsplash License (ücretsiz) |
+| Inter yazı tipi | `fonts/inter-*.woff2` | SIL Open Font License |
+| Shantell Sans yazı tipi | `fonts/shantell-sans-*.woff2` | SIL Open Font License |
+| Diğer tüm görseller (logo, avatar.svg, logolar, web ön izlemeleri) | `images/` | Bu proje için çizildi |
+
+---
+
+## 10. Commit öncesi kontrol
+
+- [ ] Bölüm 2 (hızlı kontrol) tamam
+- [ ] Bölüm 4 (CLAUDE.md kuralları) tamam
+- [ ] Büyük değişiklikse Bölüm 3 (telefon) ve Bölüm 7 (Lighthouse) tamam
+- [ ] `git status` ile sadece istenen dosyaların değiştiğini kontrol et
+- [ ] **Hiçbir dosya istemeden silinmedi**: `git status` çıktısında `D` (deleted) satırı yok
+- [ ] Klasörde şifre, kişisel bilgi veya gizli dosya yok (depo **herkese açık**)
+
+---
+
+## 11. Bilinen durumlar (hata değil)
+
+- **İletişim formu gerçek mesaj göndermez.** Sadece alanları kontrol edip teşekkür mesajı gösterir. Gerçek gönderim için ileride Formspree gibi bir servis bağlanabilir.
+- **İletişim bilgileri hayalidir.** E-posta (`merhaba@berraktasarim.example`) ve telefon (`0 (232) 000 00 00`) bilerek gerçek olmayan değerlerdir. Sosyal medya linkleri (`#`) bir yere gitmez.
+- **Kişi, firmalar ve müşteri yorumları hayalidir.** Sayfa altında bunu belirten bir not var.
+- **Git uyarısı** *"LF will be replaced by CRLF"* zararsızdır. Windows satır sonu ayarıyla ilgilidir.
+- **`images/avatar.svg`** artık sayfada kullanılmıyor ama yedek olarak duruyor.
