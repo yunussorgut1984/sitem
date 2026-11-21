@@ -208,6 +208,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .kartlar { display: grid; gap: 28px; }
 .kartlar--3 { grid-template-columns: repeat(3, 1fr); }
 .kartlar--4 { grid-template-columns: repeat(4, 1fr); }
+.kartlar--2 { grid-template-columns: repeat(2, 1fr); max-width: 960px; margin: 0 auto; }
 
 /* ---------- Hakkımda ---------- */
 .hakkimda { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -270,6 +271,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .proje:hover img { transform: scale(1.03); }
 .proje__bilgi { padding: 20px 24px 26px; }
 .proje__bilgi p { color: var(--gri); font-size: .97rem; margin: 0; }
+.proje__bilgi .dugme { margin-top: 20px; }
+.projeler__hepsi { text-align: center; margin: 48px 0 0; }
 .proje__tur {
   display: inline-block; font-size: .78rem; font-weight: 700; color: var(--ana);
   background: var(--zemin-acik); padding: 4px 12px; border-radius: 999px; margin-bottom: 10px;
@@ -424,7 +427,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  .kartlar--3, .kartlar--4 { grid-template-columns: 1fr; }
+  .kartlar--2, .kartlar--3, .kartlar--4 { grid-template-columns: 1fr; }
   .kartlar--4 { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .logo-kart figcaption { padding: 10px 12px 14px; font-size: .9rem; }
   .rakamlar__ic { grid-template-columns: repeat(2, 1fr); row-gap: 24px; }

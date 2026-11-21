@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Arial, Helvetica, sans-serif">
+  <defs><clipPath id="c"><rect width="480" height="320" rx="12"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="480" height="320" fill="#FFF7F0"/>
+    <!-- Sarsıntı dalgaları -->
+    <path d="M0 250 L60 250 L72 226 L86 276 L100 210 L114 290 L128 236 L140 250 L480 250" fill="none" stroke="#E3BFA5" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M300 250 L326 250 L336 232 L348 268 L360 238 L370 250" fill="none" stroke="#E3BFA5" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Telefon -->
+    <rect x="168" y="20" width="144" height="290" rx="22" fill="#2B3467"/>
+    <rect x="178" y="34" width="124" height="262" rx="14" fill="#FFFFFF"/>
+    <rect x="222" y="26" width="36" height="4" rx="2" fill="#4A5288"/>
+
+    <!-- Ekran -->
+    <rect x="178" y="34" width="124" height="38" fill="#587152"/>
+    <text x="240" y="58" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">Deprem Kurtarıcı</text>
+
+    <circle cx="240" cy="132" r="42" fill="#B04E8D"/>
+    <circle cx="240" cy="132" r="50" fill="none" stroke="#B04E8D" stroke-opacity=".3" stroke-width="6"/>
+    <text x="240" y="137" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">YARDIM</text>
+
+    <g font-size="9" fill="#2B3467">
+      <rect x="190" y="196" width="100" height="24" rx="8" fill="#E6EDE3"/>
+      <circle cx="203" cy="208" r="5" fill="#587152"/>
+      <text x="214" y="211">Konumumu paylaş</text>
+
+      <rect x="190" y="226" width="100" height="24" rx="8" fill="#E6EDE3"/>
+      <circle cx="203" cy="238" r="5" fill="#587152"/>
+      <text x="214" y="241">Düdük sesi çal</text>
+
+      <rect x="190" y="256" width="100" height="24" rx="8" fill="#FCE5D3"/>
+      <circle cx="203" cy="268" r="5" fill="#B04E8D"/>
+      <text x="214" y="271">Acil kişiler</text>
+    </g>
+
+    <!-- Konum işaretleri -->
+    <g transform="translate(80 86)">
+      <path d="M0 0a22 22 0 0 1 22 22c0 16-22 40-22 40S-22 38-22 22A22 22 0 0 1 0 0Z" fill="#587152"/>
+      <circle cx="0" cy="22" r="8" fill="#FFFFFF"/>
+    </g>
+    <g transform="translate(398 70)">
+      <path d="M0 0a18 18 0 0 1 18 18c0 13-18 33-18 33S-18 31-18 18A18 18 0 0 1 0 0Z" fill="#B04E8D"/>
+      <circle cx="0" cy="18" r="6" fill="#FFFFFF"/>
+    </g>
+  </g>
+</svg>

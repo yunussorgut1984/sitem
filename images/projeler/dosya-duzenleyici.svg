@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Arial, Helvetica, sans-serif">
+  <defs><clipPath id="c"><rect width="480" height="320" rx="12"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="480" height="320" fill="#FFFFFF"/>
+    <rect width="480" height="30" fill="#2B3467"/>
+    <circle cx="18" cy="15" r="5" fill="#FF5F57"/><circle cx="34" cy="15" r="5" fill="#FEBC2E"/><circle cx="50" cy="15" r="5" fill="#28C840"/>
+    <text x="240" y="19" font-size="10" fill="#E4E2EF" text-anchor="middle">python duzenle.py indirilenler</text>
+
+    <!-- Karışık dosyalar -->
+    <g font-size="9" font-weight="700" text-anchor="middle">
+      <g transform="translate(34 70) rotate(-8)"><path d="M0 0h30l10 10v40H0Z" fill="#FCE5D3" stroke="#E3BFA5" stroke-width="1.5"/><text x="20" y="34" fill="#B04E8D">JPG</text></g>
+      <g transform="translate(92 60) rotate(6)"><path d="M0 0h30l10 10v40H0Z" fill="#E6EDE3" stroke="#587152" stroke-width="1.5"/><text x="20" y="34" fill="#43593E">PDF</text></g>
+      <g transform="translate(40 150) rotate(5)"><path d="M0 0h30l10 10v40H0Z" fill="#FFF7F0" stroke="#E3BFA5" stroke-width="1.5"/><text x="20" y="34" fill="#2B3467">MP3</text></g>
+      <g transform="translate(100 140) rotate(-10)"><path d="M0 0h30l10 10v40H0Z" fill="#FCE5D3" stroke="#E3BFA5" stroke-width="1.5"/><text x="20" y="34" fill="#B04E8D">PNG</text></g>
+      <g transform="translate(60 228) rotate(-4)"><path d="M0 0h30l10 10v40H0Z" fill="#E6EDE3" stroke="#587152" stroke-width="1.5"/><text x="20" y="34" fill="#43593E">TXT</text></g>
+      <g transform="translate(118 220) rotate(8)"><path d="M0 0h30l10 10v40H0Z" fill="#FFF7F0" stroke="#E3BFA5" stroke-width="1.5"/><text x="20" y="34" fill="#2B3467">MP4</text></g>
+    </g>
+
+    <!-- Ok -->
+    <path d="M182 175h60" stroke="#587152" stroke-width="6" stroke-linecap="round"/>
+    <path d="M234 160l18 15-18 15" fill="none" stroke="#587152" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Düzenli klasörler -->
+    <g font-size="12" font-weight="700" fill="#2B3467">
+      <g transform="translate(278 52)"><path d="M0 8a6 6 0 0 1 6-6h26l8 8h52a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6Z" fill="#E6EDE3" stroke="#587152" stroke-width="1.5"/><text x="49" y="40" text-anchor="middle">Resimler</text></g>
+      <g transform="translate(278 120)"><path d="M0 8a6 6 0 0 1 6-6h26l8 8h52a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6Z" fill="#FCE5D3" stroke="#E3BFA5" stroke-width="1.5"/><text x="49" y="40" text-anchor="middle">Belgeler</text></g>
+      <g transform="translate(278 188)"><path d="M0 8a6 6 0 0 1 6-6h26l8 8h52a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6Z" fill="#E6EDE3" stroke="#587152" stroke-width="1.5"/><text x="49" y="40" text-anchor="middle">Müzik</text></g>
+      <g transform="translate(278 256)"><path d="M0 8a6 6 0 0 1 6-6h26l8 8h52a6 6 0 0 1 6 6v36a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6Z" fill="#FCE5D3" stroke="#E3BFA5" stroke-width="1.5"/><text x="49" y="40" text-anchor="middle">Videolar</text></g>
+    </g>
+    <g fill="#587152">
+      <circle cx="400" cy="82" r="10"/><circle cx="400" cy="150" r="10"/><circle cx="400" cy="218" r="10"/><circle cx="400" cy="286" r="10"/>
+    </g>
+    <g fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M395 82l4 4 6-7"/><path d="M395 150l4 4 6-7"/><path d="M395 218l4 4 6-7"/><path d="M395 286l4 4 6-7"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="480" height="320" font-family="Consolas, 'Courier New', monospace">
+  <defs><clipPath id="c"><rect width="480" height="320" rx="12"/></clipPath></defs>
+  <g clip-path="url(#c)">
+    <rect width="480" height="320" fill="#2B3467"/>
+    <rect width="480" height="30" fill="#232A55"/>
+    <circle cx="18" cy="15" r="5" fill="#FF5F57"/><circle cx="34" cy="15" r="5" fill="#FEBC2E"/><circle cx="50" cy="15" r="5" fill="#28C840"/>
+    <text x="240" y="19" font-size="10" fill="#B3B1CC" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">Terminal</text>
+
+    <text x="28" y="62" font-size="13" fill="#B3B1CC">&gt; <tspan fill="#FFFFFF">python dosya_say.py</tspan></text>
+    <text x="28" y="88" font-size="12" fill="#B3B1CC">Klasör taranıyor… 58 dosya bulundu</text>
+
+    <g font-size="13">
+      <text x="28" y="128" fill="#FCE5D3">.jpg</text>
+      <rect x="86" y="116" width="250" height="16" rx="8" fill="#B04E8D"/>
+      <text x="350" y="128" fill="#FFFFFF">22</text>
+
+      <text x="28" y="164" fill="#FCE5D3">.pdf</text>
+      <rect x="86" y="152" width="170" height="16" rx="8" fill="#587152"/>
+      <text x="270" y="164" fill="#FFFFFF">15</text>
+
+      <text x="28" y="200" fill="#FCE5D3">.mp3</text>
+      <rect x="86" y="188" width="114" height="16" rx="8" fill="#E3BFA5"/>
+      <text x="214" y="200" fill="#FFFFFF">10</text>
+
+      <text x="28" y="236" fill="#FCE5D3">.txt</text>
+      <rect x="86" y="224" width="80" height="16" rx="8" fill="#E6EDE3"/>
+      <text x="180" y="236" fill="#FFFFFF">7</text>
+
+      <text x="28" y="272" fill="#FCE5D3">.mp4</text>
+      <rect x="86" y="260" width="46" height="16" rx="8" fill="#FCE5D3"/>
+      <text x="146" y="272" fill="#FFFFFF">4</text>
+    </g>
+
+    <!-- Büyüteç -->
+    <g transform="translate(392 150)" fill="none" stroke="#E6EDE3" stroke-width="8" stroke-linecap="round">
+      <circle cx="0" cy="0" r="34"/>
+      <path d="M25 25l28 28"/>
+    </g>
+    <text x="392" y="158" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">58</text>
+  </g>
+</svg>

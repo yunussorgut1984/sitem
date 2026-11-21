@@ -1,5 +1,5 @@
 // =========================================================
-// Berrak Tasarım Stüdyosu - Sayfa etkileşimleri
+// Yunus Sorgut kişisel site - Sayfa etkileşimleri
 // =========================================================
 
 // JavaScript çalışıyorsa belirme efektini etkinleştir
@@ -102,7 +102,6 @@ const formSonuc = document.getElementById("formSonuc");
 const kurallar = {
   ad: (d) => (d.trim().length < 3 ? "Lütfen adınızı ve soyadınızı yazın." : ""),
   eposta: (d) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.trim()) ? "" : "Lütfen geçerli bir e-posta adresi yazın."),
-  konu: (d) => (d ? "" : "Lütfen bir hizmet seçin."),
   mesaj: (d) => (d.trim().length < 10 ? "Mesajınız en az 10 karakter olmalı." : ""),
 };
 
@@ -136,7 +135,7 @@ form.addEventListener("submit", (e) => {
   }
 
   const ad = form.elements.ad.value.trim().split(" ")[0];
-  formSonuc.textContent = `Teşekkürler ${ad}! Mesajınız alındı, 24 saat içinde size dönüş yapacağım.`;
+  formSonuc.textContent = `Teşekkürler ${ad}! Mesajınız alındı, en kısa sürede dönüş yapacağım.`;
   form.reset();
 });
 
