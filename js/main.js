@@ -10,14 +10,7 @@ const menuDugme = document.getElementById("menuDugme");
 const menu = document.getElementById("menu");
 
 function menuyuKapat() {
-  menu.classList.remove("acik");
-  menuDugme.setAttribute("aria-expanded", "false");
-  menuDugme.setAttribute("aria-label", "Menüyü aç");
-}
-
-menuDugme.addEventListener("click", () => {
-  const acik = menu.classList.toggle("acik");
-
+  
   menuDugme.setAttribute("aria-label", acik ? "Menüyü kapat" : "Menüyü aç");
 });
 
