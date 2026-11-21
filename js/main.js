@@ -17,7 +17,7 @@ function menuyuKapat() {
 
 menuDugme.addEventListener("click", () => {
   const acik = menu.classList.toggle("acik");
-  menuDugme.setAttribute("aria-expanded", String(acik));
+
   menuDugme.setAttribute("aria-label", acik ? "Menüyü kapat" : "Menüyü aç");
 });
 
