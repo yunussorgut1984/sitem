@@ -46,7 +46,9 @@
 /* ---------- Renkler ve temel değerler ---------- */
 :root {
   /* Renkler profil illüstrasyonundan alındı */
-         /* şeftali - giriş geçişi */
+  --beyaz: #FFFFFF;
+  --zemin-acik: #FFF7F0;     /* krem - bölüm zemini */
+  --seftali: #FCE5D3;        /* şeftali - giriş geçişi */
   --cizgi: #F5E3D6;          /* kart kenarı, çizgi */
   --cizgi-koyu: #E3BFA5;     /* üzerine gelince kenar, oklar */
   --ana: #587152;            /* adaçayı yeşili - ana renk (buton, link) */
