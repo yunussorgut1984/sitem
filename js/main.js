@@ -142,6 +142,14 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  // Bal küpü: görünmeyen _gotcha alanı doluysa gönderen bottur.
+  // Formspree'ye hiç gönderilmez (kota harcanmaz), bota başarılı gibi görünür.
+  if (form.elements._gotcha.value) {
+    sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
+    form.reset();
+    return;
+  }
+
   gonderDugme.disabled = true;
   gonderDugme.textContent = "Gönderiliyor…";
 

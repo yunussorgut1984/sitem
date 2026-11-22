@@ -365,6 +365,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .form__sonuc { margin: 16px 0 0; font-weight: 600; color: var(--basari); text-align: center; }
 .form__sonuc:empty { display: none; }
 .form__sonuc--hata { color: var(--hata); }
+.bal-kupu { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; } /* spam botları için tuzak alan */
 
 /* ---------- Alt bilgi ---------- */
 .alt { background: var(--yazi); color: #E4E2EF; padding: 64px 0 24px; }

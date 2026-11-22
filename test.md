@@ -45,6 +45,7 @@ Kısa yol: **Değişiklik küçükse → Bölüm 2. Büyük değişiklik veya ya
 - [ ] Doğru doldurunca sayfa yenilenmeden yeşil "İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır." mesajı çıkıyor ve form temizleniyor
 - [ ] Gönderilen mesaj Formspree hesabının e-postasına geliyor
 - [ ] İnternet kapalıyken (F12 → Network → **Offline**) gönderince kırmızı "Gönderilemedi, tekrar deneyin." yazıyor ve form temizlenmiyor
+- [ ] Formda görünmeyen bal küpü alanı doluyken gönderince teşekkür mesajı çıkıyor ama Formspree'ye istek gitmiyor (Bölüm 13, adım 6)
 
 ### Konsol
 - [ ] **F12 → Console** sekmesinde kırmızı hata yok
@@ -317,3 +318,14 @@ Bu bölüm, Claude'un `CLAUDE.md` kurallarına gerçekten uyup uymadığını g�
    - İlk gönderimde Formspree "formu onaylayın" e-postası gönderebilir. Onaylayıp tekrar deneyin.
 4. **İnternet kapalı:** F12 → Network → **Offline** seçip formu doldurup gönderin. Kırmızı "Gönderilemedi, tekrar deneyin." yazmalı, yazdıklarınız silinmemeli. Sonra **No throttling** seçerek interneti geri açın.
 5. **Konsol:** F12 → Console'da kırmızı hata olmamalı (Offline testindeki ağ hatası satırı normaldir).
+6. **Bal küpü (bot denemesi):** F12 → Console'a `document.getElementById("gotcha").value = "bot"` yazıp Enter'a basın, sonra formu doldurup gönderin. Teşekkür mesajı çıkmalı ama Network sekmesinde `formspree` isteği olmamalı ve e-posta gelmemeli.
+
+### Bal küpü alanı (spam koruması) – 23.11.2026
+
+- **Neden:** Formspree adresi herkese açık olduğu için botlar forma spam gönderebilir ve aylık kotayı doldurabilir.
+- **Nasıl çalışıyor:** Forma `name="_gotcha"` adında görünmez bir alan eklendi (`index.html`). İnsanlar görmez ve boş bırakır, botlar doldurur.
+  - `css/style.css` → `.bal-kupu` alanı ekranın dışına taşır. `display: none` bilerek kullanılmadı, çünkü bazı botlar gizli alanları atlar.
+  - `tabindex="-1"` ve `aria-hidden="true"` sayesinde klavye kullanıcıları ve ekran okuyucular alana gelmez.
+  - `js/main.js` alan doluysa mesajı Formspree'ye **göndermez** ama teşekkür mesajı gösterir; bot başarılı sanır, kota harcanmaz.
+  - JavaScript'siz gönderimde Formspree'nin kendisi de `_gotcha` dolu mesajları spam sayıp iletmez.
+- **Kontrol:** Formda yeni bir alan görünmemeli, Tab ile gezinirken bu alana gelinmemeli; bot denemesi için yukarıdaki adım 6.
