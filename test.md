@@ -42,7 +42,9 @@ Kısa yol: **Değişiklik küçükse → Bölüm 2. Büyük değişiklik veya ya
 ### İletişim formu
 - [ ] Boş gönderince 3 alanın altında da kırmızı hata mesajı çıkıyor
 - [ ] `abc` gibi hatalı e-postada "geçerli bir e-posta" uyarısı çıkıyor
-- [ ] Doğru doldurunca "Teşekkürler [ad]!" mesajı çıkıyor ve form temizleniyor
+- [ ] Doğru doldurunca sayfa yenilenmeden yeşil "İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır." mesajı çıkıyor ve form temizleniyor
+- [ ] Gönderilen mesaj Formspree hesabının e-postasına geliyor
+- [ ] İnternet kapalıyken (F12 → Network → **Offline**) gönderince kırmızı "Gönderilemedi, tekrar deneyin." yazıyor ve form temizlenmiyor
 
 ### Konsol
 - [ ] **F12 → Console** sekmesinde kırmızı hata yok
@@ -223,7 +225,7 @@ npx -y lighthouse@12.8.2 http://localhost:8000/ --preset=desktop --view
 
 ## 11. Bilinen durumlar (hata değil)
 
-- **İletişim formu gerçek mesaj göndermez.** Sadece alanları kontrol edip teşekkür mesajı gösterir. Gerçek gönderim için ileride Formspree gibi bir servis bağlanabilir.
+- **İletişim formu Formspree'ye gönderir** (`https://formspree.io/f/xgakpvak`). İlk gönderimde Formspree, formu onaylamanızı isteyen bir e-posta gönderebilir; onaylanmadan mesajlar iletilmez. Ayrıntılar Bölüm 13'te.
 - **Hakkımda ve giriş metinleri taslaktır.** Kullanıcının isteğiyle hayali olarak yazıldı; ileride gerçek bilgilerle değiştirilebilir.
 - **İletişimde sadece GitHub linki var.** E-posta, telefon ve adres bilerek eklenmedi.
 - **Git uyarısı** *"LF will be replaced by CRLF"* zararsızdır. Windows satır sonu ayarıyla ilgilidir.
@@ -288,3 +290,30 @@ Bu bölüm, Claude'un `CLAUDE.md` kurallarına gerçekten uyup uymadığını g�
 3. **Kontrol:** Onay vermeden önce `git status` çıktısı "nothing to commit, working tree clean" olmalı.
 
 > Yeni bir kural testi yapınca aynı biçimde "Test 2", "Test 3" olarak ekle.
+
+---
+
+## 13. İletişim formu (Formspree)
+
+| | |
+|---|---|
+| **Tarih** | 23.11.2026 |
+| **Kullanıcının isteği** | İletişim formu Formspree ile gerçek mesaj göndersin. Gönderince sayfa yenilenmesin; başarıda "İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", hatada "Gönderilemedi, tekrar deneyin." yazsın. |
+| **Form adresi** | `https://formspree.io/f/xgakpvak` |
+| **Kısıtlar** | Mevcut tasarım ve alan kontrolleri bozulmayacak, dış kütüphane yok. |
+| **Bitti ölçütü** | 1) Formu doldurup gönderince e-postaya mesaj geliyor. 2) Boş gönderince hata uyarıları hâlâ çıkıyor. 3) İnternet kapalıyken gönderince "Gönderilemedi" yazıyor. |
+
+**Nasıl çalışıyor:**
+- Adres `index.html` içindeki `<form action="...">` etiketinde durur. JavaScript çalışmazsa form yine Formspree'ye gider.
+- `js/main.js` önce alanları kontrol eder, geçerliyse tarayıcının kendi `fetch` özelliğiyle gönderir. Dış kütüphane yok.
+- Gönderim sırasında düğme "Gönderiliyor…" yazar ve tekrar basılamaz.
+- E-posta alanı Formspree'ye `email` olarak da gider; gelen mesajda "Yanıtla" doğrudan gönderene gider.
+- Hata mesajı kırmızı (`.form__sonuc--hata`), başarı mesajı yeşil görünür.
+
+**Test adımları:**
+1. Siteyi yerel sunucuyla (http://localhost:8000) ya da canlı adresten açın, **Ctrl+F5** ile yenileyin.
+2. **Boş gönderim:** Hiçbir alanı doldurmadan "Mesajı Gönder"e basın. 3 alanın altında kırmızı hata çıkmalı; F12 → Network'te `formspree` isteği olmamalı.
+3. **Gerçek gönderim:** Formu doğru doldurup gönderin. Sayfa yenilenmemeli, yeşil başarı mesajı çıkmalı, form temizlenmeli. Birkaç dakika içinde Formspree hesabının e-postasına mesaj gelmeli.
+   - İlk gönderimde Formspree "formu onaylayın" e-postası gönderebilir. Onaylayıp tekrar deneyin.
+4. **İnternet kapalı:** F12 → Network → **Offline** seçip formu doldurup gönderin. Kırmızı "Gönderilemedi, tekrar deneyin." yazmalı, yazdıklarınız silinmemeli. Sonra **No throttling** seçerek interneti geri açın.
+5. **Konsol:** F12 → Console'da kırmızı hata olmamalı (Offline testindeki ağ hatası satırı normaldir).

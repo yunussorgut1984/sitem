@@ -364,6 +364,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hata { color: var(--hata); font-size: .85rem; min-height: 1.2em; display: block; margin-top: 4px; }
 .form__sonuc { margin: 16px 0 0; font-weight: 600; color: var(--basari); text-align: center; }
 .form__sonuc:empty { display: none; }
+.form__sonuc--hata { color: var(--hata); }
 
 /* ---------- Alt bilgi ---------- */
 .alt { background: var(--yazi); color: #E4E2EF; padding: 64px 0 24px; }

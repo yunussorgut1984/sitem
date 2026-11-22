@@ -93,9 +93,9 @@ if (!hareketAzalt && "IntersectionObserver" in window) {
   rakamlar.forEach((el) => sayac.observe(el));
 }
 
-// ---------- İletişim formu kontrolü ----------
-// Not: Form şimdilik gerçek bir mesaj göndermez. Alanları kontrol edip
-// başarı mesajı gösterir. Gerçek gönderim için Formspree vb. bağlanabilir.
+// ---------- İletişim formu kontrolü ve gönderimi ----------
+// Alanlar kontrol edildikten sonra mesaj, formun action adresindeki
+// Formspree'ye sayfa yenilenmeden (fetch ile) gönderilir.
 const form = document.getElementById("iletisimFormu");
 const formSonuc = document.getElementById("formSonuc");
 
@@ -122,7 +122,15 @@ Object.keys(kurallar).forEach((ad) => {
   });
 });
 
-form.addEventListener("submit", (e) => {
+const gonderDugme = form.querySelector('button[type="submit"]');
+const gonderYazisi = gonderDugme.textContent;
+
+function sonucGoster(metin, hataMi) {
+  formSonuc.textContent = metin;
+  formSonuc.classList.toggle("form__sonuc--hata", hataMi);
+}
+
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   formSonuc.textContent = "";
 
@@ -134,9 +142,28 @@ form.addEventListener("submit", (e) => {
     return;
   }
 
-  const ad = form.elements.ad.value.trim().split(" ")[0];
-  formSonuc.textContent = `Teşekkürler ${ad}! Mesajınız alındı, en kısa sürede dönüş yapacağım.`;
-  form.reset();
+  gonderDugme.disabled = true;
+  gonderDugme.textContent = "Gönderiliyor…";
+
+  const veri = new FormData(form);
+  veri.append("email", form.elements.eposta.value.trim()); // Formspree'de "Yanıtla" gönderene gitsin
+
+  try {
+    const yanit = await fetch(form.action, {
+      method: "POST",
+      body: veri,
+      headers: { Accept: "application/json" },
+    });
+    if (!yanit.ok) throw new Error("Formspree yanıtı: " + yanit.status);
+
+    sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
+    form.reset();
+  } catch (hata) {
+    sonucGoster("Gönderilemedi, tekrar deneyin.", true);
+  } finally {
+    gonderDugme.disabled = false;
+    gonderDugme.textContent = gonderYazisi;
+  }
 });
 
 // ---------- Alt bilgideki yıl ----------
