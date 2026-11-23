@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kayan Sayı Bulmacası | Oyunlar | Yunus Sorgut</title>
+  <meta name="description" content="Tarayıcıda ücretsiz kayan sayı (15) bulmacası. Kareleri kaydırıp 1'den 15'e sıraya dizin; klavye ve fareyle oynanır, hamle ve süre tutulur, internetsiz de çalışır.">
+  <meta name="author" content="Yunus Sorgut">
+  <meta name="theme-color" content="#587152">
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/shantell-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/oyunlar.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <a class="atla" href="#icerik">İçeriğe geç</a>
+
+  <!-- ========== ÜST MENÜ ========== -->
+  <header class="ust" id="ust">
+    <div class="kap ust__ic">
+      <a class="marka" href="../index.html" aria-label="Yunus Sorgut - anasayfa">
+        <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu: içinde imleç oku bulunan adaçayı yeşili su damlası" width="40" height="40">
+        <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+      </a>
+
+      <button class="menu-dugme" id="menuDugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Ana menü">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html" aria-current="page">Oyunlar</a>
+        <a href="../index.html#iletisim" class="dugme dugme--kucuk">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik" class="oyun">
+    <div class="kap">
+      <a href="../oyunlar.html" class="oyun__geri">← Tüm oyunlar</a>
+      <header class="oyun__baslik">
+        <h1>Kayan Sayı Bulmacası</h1>
+        <p>Kareleri boşluğa kaydırarak 1'den 15'e kadar sıraya dizin. Boşluk en sağ alt köşede kalmalı.</p>
+      </header>
+
+      <div class="oyun__alan">
+        <div class="kayan" id="kayan" role="group" aria-label="Kayan sayı bulmacası, 4 satır 4 sütun"></div>
+
+        <div class="oyun__panel">
+          <div class="oyun__bilgi">
+            <span>Hamle: <strong id="hamle">0</strong></span>
+            <span>Süre: <strong id="sure">0:00</strong></span>
+            <span>Yerinde: <strong id="yerinde">0</strong>/15</span>
+          </div>
+
+          <div class="oyun__dugmeler">
+            <button type="button" class="dugme dugme--kucuk" id="yeni">Yeni oyun</button>
+          </div>
+
+          <p class="oyun__sonuc" id="sonuc" role="status" aria-live="polite"></p>
+
+          <details class="nasil">
+            <summary>Nasıl oynanır?</summary>
+            <ul>
+              <li><strong>Fare:</strong> Boşluğun yanındaki bir kareye tıklayın, kare boşluğa kayar.</li>
+              <li><strong>Klavye:</strong> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> tuşları, boşluğun yanındaki kareyi o yöne kaydırır. Ok tuşları sayfanın her yerinde çalışır (bir yazı alanında değilseniz).</li>
+              <li>İsterseniz <kbd>Tab</kbd> ile bir kare seçip <kbd>Enter</kbd> ya da <kbd>Space</kbd> ile kaydırabilirsiniz.</li>
+              <li>Yerine oturan kareler koyu yeşil olur. Hepsi sıraya girince oyun kendiliğinden biter.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== ALT BİLGİ ========== -->
+  <footer class="alt">
+    <div class="kap alt__ic">
+      <div>
+        <a class="marka marka--alt" href="../index.html">
+          <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu" width="36" height="36" loading="lazy">
+          <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+        </a>
+        <p>Küçük araçlar, büyük kolaylık.</p>
+      </div>
+      <nav aria-label="Alt menü" class="alt__menu">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html">Oyunlar</a>
+        <a href="../index.html#iletisim">İletişim</a>
+        <a href="https://github.com/yunussorgut1984" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="kap alt__son">
+      <p>© <span id="yil">2026</span> Yunus Sorgut. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/oyunlar/ortak.js"></script>
+  <script src="../js/oyunlar/kayan-sayi.js"></script>
+</body>
+</html>

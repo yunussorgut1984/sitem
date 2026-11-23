@@ -329,3 +329,72 @@ Bu bölüm, Claude'un `CLAUDE.md` kurallarına gerçekten uyup uymadığını g�
   - `js/main.js` alan doluysa mesajı Formspree'ye **göndermez** ama teşekkür mesajı gösterir; bot başarılı sanır, kota harcanmaz.
   - JavaScript'siz gönderimde Formspree'nin kendisi de `_gotcha` dolu mesajları spam sayıp iletmez.
 - **Kontrol:** Formda yeni bir alan görünmemeli, Tab ile gezinirken bu alana gelinmemeli; bot denemesi için yukarıdaki adım 6.
+
+---
+
+## 14. Oyunlar
+
+| | |
+|---|---|
+| **Tarih** | 23.11.2026 |
+| **Kullanıcının isteği** | Siteye "Oyunlar" menüsü ve sayfası eklensin; içinde bulmaca, puzzle, sudoku gibi oyunlar olsun. Oyunlar klavye ve fareyle oynanabilsin, oyun bitince doğruluğu kontrol edilebilsin, çevrimdışıyken de oynanabilsin. |
+| **Sayfalar** | `oyunlar.html` (oyun kartları) → `oyunlar/sudoku.html`, `oyunlar/kayan-sayi.html`, `oyunlar/kelime-avi.html`, `oyunlar/cengel.html` |
+| **Kod** | `css/oyunlar.css`, `js/oyunlar/ortak.js` + her oyunun kendi JS dosyası, kökte `sw.js` (çevrimdışı) |
+
+### Genel
+- [ ] Ana sayfanın üst ve alt menüsünde **Oyunlar** linki var, `oyunlar.html`'i açıyor
+- [ ] `oyunlar.html`'de 4 kart var, her "Oyna →" doğru oyunu açıyor
+- [ ] Oyun sayfalarında üst menü linkleri (Hakkımda, Projeler, İletişim) ana sayfadaki bölüme gidiyor, "← Tüm oyunlar" geri dönüyor
+- [ ] Ana sayfa eskisi gibi çalışıyor: menü, kaydırma efektleri, iletişim formu
+- [ ] **F12 → Console**'da kırmızı hata yok (her oyun sayfasında)
+- [ ] Telefon görünümünde (375px) tablolar ekrana sığıyor, yana kayma yok
+
+### Sudoku
+- [ ] **Fare:** Hücreye tıklayıp alttaki rakam tuşlarıyla yazılıyor, "Sil" siliyor
+- [ ] **Klavye:** Tab ile tabloya girilip ok tuşlarıyla geziliyor, 1–9 yazıyor, Backspace/Delete siliyor
+- [ ] Koyu renkli (verilen) rakamlar değiştirilemiyor
+- [ ] Yanlış rakam yazıp **Kontrol et** → hücre kırmızı, kırmızı hata mesajı
+- [ ] Tablo doğru tamamlanınca "Tebrikler, Sudoku'yu çözdünüz!" ve süre yazıyor
+- [ ] Seviye değişince yeni tablo geliyor (Kolay 40, Orta 32, Zor 26 hazır rakam)
+
+### Kayan sayı bulmacası
+- [ ] **Fare:** Boşluğun yanındaki kareye tıklayınca kare kayıyor; uzaktaki kareye tıklayınca bir şey olmuyor
+- [ ] **Klavye:** Ok tuşları kareleri kaydırıyor; Tab ile kare seçip Enter/Space ile kaydırılabiliyor
+- [ ] Hamle sayacı ve süre artıyor, yerine oturan kareler koyu yeşil oluyor
+- [ ] Hepsi sıraya girince "Tebrikler! X hamlede, Y sürede çözdünüz." yazıyor
+
+### Kelime avı
+- [ ] **Fare:** İlk harften son harfe sürükleyince kelime bulunuyor; iki tıklamayla da bulunuyor
+- [ ] **Klavye:** Ok tuşlarıyla gezilip Enter ile ilk ve son harf seçilince bulunuyor, Esc seçimi iptal ediyor
+- [ ] Bulunan kelime yeşil oluyor ve listede üstü çiziliyor
+- [ ] Yanlış seçim kısa süre kırmızı yanıyor ve hata mesajı çıkıyor
+- [ ] Hepsi bulununca "Tebrikler, tüm kelimeleri buldunuz!" yazıyor
+- [ ] "Kelimeleri göster" kalan kelimeleri gösteriyor
+
+### Mini çengel bulmaca
+- [ ] Harf yazınca imleç kelime boyunca ilerliyor; küçük harf büyüğe çevriliyor (**i → İ**, **ı → I**)
+- [ ] Ok tuşlarıyla geziliyor, **Space** yön değiştiriyor, Backspace siliyor ve geri gidiyor
+- [ ] Aynı kareye tekrar tıklayınca yön değişiyor; ipucuna tıklayınca o kelimeye gidiliyor
+- [ ] Yanlış harf yazıp **Kontrol et** → kare kırmızı
+- [ ] Tablo doğru tamamlanınca "Tebrikler, bulmacayı çözdünüz!" yazıyor
+- [ ] "Sonraki bulmaca" 3 bulmaca arasında geçiyor (Bulmaca 1/3, 2/3, 3/3)
+
+### Çevrimdışı test
+Service worker yalnızca `https` veya `localhost` üzerinde çalışır; `index.html`'e çift tıklayarak açılan sayfada denenemez.
+
+1. Siteyi **yerel sunucuyla** (http://localhost:8000) ya da canlı adresten açın ve `oyunlar.html`'e bir kez girin.
+2. **F12 → Application → Service Workers** bölümünde `sw.js` **activated and is running** görünmeli.
+3. **F12 → Application → Cache storage** altında `sitem-v1` önbelleğinde 27 dosya olmalı.
+4. **F12 → Network → Offline** seçin (ya da Wi-Fi'yi kapatın).
+5. `oyunlar.html` ve 4 oyun sayfasını açıp yenileyin: hepsi açılmalı ve oynanabilmeli.
+6. Testten sonra **No throttling** seçerek interneti geri açın.
+
+> **Önemli:** Site dosyalarında değişiklik yaptıktan sonra `sw.js` içindeki `SURUM` değerini artırın (`sitem-v1` → `sitem-v2`). Artırılmazsa ziyaretçiler bir süre eski dosyaları görebilir.
+
+### Claude'un yaptığı otomatik testler (23.11.2026)
+- `node --check` ile tüm JS dosyaları: sözdizimi hatası yok.
+- Bölüm 4'teki HTML kural kontrolü: 6 sayfanın hepsi `True`, `altsiz=0`.
+- Üretici testleri (Node): Sudoku her seviyede tek çözümlü tablo üretiyor (5'er deneme); kelime avında 200 tablonun hepsinde kelimeler yerinde; 3 çengel bulmacanın kelimeleri ve ipuçları eşleşiyor.
+- Arka planda Edge ile etkileşim testi: Sudoku (fare, klavye, yanlış işaretleme, bitiş), kayan sayı (tıklama, ok tuşu), kelime avı (sürükleme, iki tıklama, klavye, yanlış seçim, bitiş), çengel (Türkçe harf, ilerleme, Space, yanlış işaretleme, bitiş, sonraki bulmaca): 19/19 geçti.
+- Önbellek listesindeki 27 dosyanın hepsi sunucudan açılıyor; sayfaların kullandığı her dosya listede.
+- **Elle denenmesi gerekenler:** Kayan sayı bulmacasının sonuna kadar çözülmesi (bitiş mesajı) ve çevrimdışı test (adım 1–6).

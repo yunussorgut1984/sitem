@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kelime Avı | Oyunlar | Yunus Sorgut</title>
+  <meta name="description" content="Tarayıcıda ücretsiz Türkçe kelime avı. Harf tablosunda gizli kelimeleri fareyle sürükleyerek ya da klavyeyle bulun; her oyunda yeni tablo, internetsiz de çalışır.">
+  <meta name="author" content="Yunus Sorgut">
+  <meta name="theme-color" content="#587152">
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/shantell-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/oyunlar.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <a class="atla" href="#icerik">İçeriğe geç</a>
+
+  <!-- ========== ÜST MENÜ ========== -->
+  <header class="ust" id="ust">
+    <div class="kap ust__ic">
+      <a class="marka" href="../index.html" aria-label="Yunus Sorgut - anasayfa">
+        <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu: içinde imleç oku bulunan adaçayı yeşili su damlası" width="40" height="40">
+        <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+      </a>
+
+      <button class="menu-dugme" id="menuDugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Ana menü">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html" aria-current="page">Oyunlar</a>
+        <a href="../index.html#iletisim" class="dugme dugme--kucuk">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik" class="oyun">
+    <div class="kap">
+      <a href="../oyunlar.html" class="oyun__geri">← Tüm oyunlar</a>
+      <header class="oyun__baslik">
+        <h1>Kelime Avı</h1>
+        <p>Harf tablosuna gizlenmiş kelimeleri bulun. Kelimeler yatay, dikey ya da çapraz; ileri ya da geri yazılmış olabilir.</p>
+      </header>
+
+      <div class="oyun__alan">
+        <div class="kelime" id="kelime" role="grid" aria-label="Kelime avı harf tablosu, 10 satır 10 sütun"></div>
+
+        <div class="oyun__panel">
+          <div class="oyun__bilgi">
+            <span>Bulunan: <strong id="bulunan">0</strong>/<strong id="toplam">8</strong></span>
+            <span>Süre: <strong id="sure">0:00</strong></span>
+          </div>
+
+          <div>
+            <h2 class="kucuk-baslik" id="listeBaslik">Aranan kelimeler</h2>
+            <ul class="kelime-listesi" id="liste" aria-labelledby="listeBaslik"></ul>
+          </div>
+
+          <div class="oyun__dugmeler">
+            <button type="button" class="dugme dugme--kucuk" id="yeni">Yeni oyun</button>
+            <button type="button" class="dugme dugme--kucuk dugme--cizgi" id="goster">Kelimeleri göster</button>
+          </div>
+
+          <p class="oyun__sonuc" id="sonuc" role="status" aria-live="polite"></p>
+
+          <details class="nasil">
+            <summary>Nasıl oynanır?</summary>
+            <ul>
+              <li><strong>Fare / dokunmatik:</strong> Kelimenin ilk harfinden son harfine sürükleyin. Ya da önce ilk harfe, sonra son harfe tıklayın.</li>
+              <li><strong>Klavye:</strong> <kbd>Tab</kbd> ile tabloya girin, <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> ile gezin. <kbd>Enter</kbd> ya da <kbd>Space</kbd> ile ilk harfi, sonra son harfi seçin. <kbd>Esc</kbd> seçimi iptal eder.</li>
+              <li>Doğru kelime yeşile boyanır ve listede üstü çizilir. Yanlış seçim kısa süre kırmızı yanar.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== ALT BİLGİ ========== -->
+  <footer class="alt">
+    <div class="kap alt__ic">
+      <div>
+        <a class="marka marka--alt" href="../index.html">
+          <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu" width="36" height="36" loading="lazy">
+          <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+        </a>
+        <p>Küçük araçlar, büyük kolaylık.</p>
+      </div>
+      <nav aria-label="Alt menü" class="alt__menu">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html">Oyunlar</a>
+        <a href="../index.html#iletisim">İletişim</a>
+        <a href="https://github.com/yunussorgut1984" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="kap alt__son">
+      <p>© <span id="yil">2026</span> Yunus Sorgut. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/oyunlar/ortak.js"></script>
+  <script src="../js/oyunlar/kelime-avi.js"></script>
+</body>
+</html>

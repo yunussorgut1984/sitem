@@ -35,8 +35,8 @@ const yukari = document.getElementById("yukari");
 
 function kaydirmaKontrol() {
   const y = window.scrollY;
-  ust.classList.toggle("kaydi", y > 10);
-  yukari.classList.toggle("gorunur", y > 600);
+  if (ust) ust.classList.toggle("kaydi", y > 10);
+  if (yukari) yukari.classList.toggle("gorunur", y > 600);
 }
 window.addEventListener("scroll", kaydirmaKontrol, { passive: true });
 kaydirmaKontrol();
@@ -99,80 +99,93 @@ if (!hareketAzalt && "IntersectionObserver" in window) {
 const form = document.getElementById("iletisimFormu");
 const formSonuc = document.getElementById("formSonuc");
 
-const kurallar = {
-  ad: (d) => (d.trim().length < 3 ? "Lütfen adınızı ve soyadınızı yazın." : ""),
-  eposta: (d) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.trim()) ? "" : "Lütfen geçerli bir e-posta adresi yazın."),
-  mesaj: (d) => (d.trim().length < 10 ? "Mesajınız en az 10 karakter olmalı." : ""),
-};
+if (form) {
+  const kurallar = {
+    ad: (d) => (d.trim().length < 3 ? "Lütfen adınızı ve soyadınızı yazın." : ""),
+    eposta: (d) => (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.trim()) ? "" : "Lütfen geçerli bir e-posta adresi yazın."),
+    mesaj: (d) => (d.trim().length < 10 ? "Mesajınız en az 10 karakter olmalı." : ""),
+  };
 
-function alaniKontrolEt(alan) {
-  const hataMesaji = kurallar[alan.name](alan.value);
-  const kutu = alan.closest(".alan");
-  kutu.classList.toggle("hatali", Boolean(hataMesaji));
-  kutu.querySelector(".hata").textContent = hataMesaji;
-  alan.setAttribute("aria-invalid", hataMesaji ? "true" : "false");
-  return !hataMesaji;
-}
-
-Object.keys(kurallar).forEach((ad) => {
-  const alan = form.elements[ad];
-  alan.addEventListener("blur", () => alaniKontrolEt(alan));
-  alan.addEventListener("input", () => {
-    if (alan.closest(".alan").classList.contains("hatali")) alaniKontrolEt(alan);
-  });
-});
-
-const gonderDugme = form.querySelector('button[type="submit"]');
-const gonderYazisi = gonderDugme.textContent;
-
-function sonucGoster(metin, hataMi) {
-  formSonuc.textContent = metin;
-  formSonuc.classList.toggle("form__sonuc--hata", hataMi);
-}
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  formSonuc.textContent = "";
-
-  const alanlar = Object.keys(kurallar).map((ad) => form.elements[ad]);
-  const gecerli = alanlar.map(alaniKontrolEt).every(Boolean);
-
-  if (!gecerli) {
-    alanlar.find((a) => a.getAttribute("aria-invalid") === "true").focus();
-    return;
+  function alaniKontrolEt(alan) {
+    const hataMesaji = kurallar[alan.name](alan.value);
+    const kutu = alan.closest(".alan");
+    kutu.classList.toggle("hatali", Boolean(hataMesaji));
+    kutu.querySelector(".hata").textContent = hataMesaji;
+    alan.setAttribute("aria-invalid", hataMesaji ? "true" : "false");
+    return !hataMesaji;
   }
 
-  // Bal küpü: görünmeyen _gotcha alanı doluysa gönderen bottur.
-  // Formspree'ye hiç gönderilmez (kota harcanmaz), bota başarılı gibi görünür.
-  if (form.elements._gotcha.value) {
-    sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
-    form.reset();
-    return;
-  }
-
-  gonderDugme.disabled = true;
-  gonderDugme.textContent = "Gönderiliyor…";
-
-  const veri = new FormData(form);
-  veri.append("email", form.elements.eposta.value.trim()); // Formspree'de "Yanıtla" gönderene gitsin
-
-  try {
-    const yanit = await fetch(form.action, {
-      method: "POST",
-      body: veri,
-      headers: { Accept: "application/json" },
+  Object.keys(kurallar).forEach((ad) => {
+    const alan = form.elements[ad];
+    alan.addEventListener("blur", () => alaniKontrolEt(alan));
+    alan.addEventListener("input", () => {
+      if (alan.closest(".alan").classList.contains("hatali")) alaniKontrolEt(alan);
     });
-    if (!yanit.ok) throw new Error("Formspree yanıtı: " + yanit.status);
+  });
 
-    sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
-    form.reset();
-  } catch (hata) {
-    sonucGoster("Gönderilemedi, tekrar deneyin.", true);
-  } finally {
-    gonderDugme.disabled = false;
-    gonderDugme.textContent = gonderYazisi;
+  const gonderDugme = form.querySelector('button[type="submit"]');
+  const gonderYazisi = gonderDugme.textContent;
+
+  function sonucGoster(metin, hataMi) {
+    formSonuc.textContent = metin;
+    formSonuc.classList.toggle("form__sonuc--hata", hataMi);
   }
-});
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    formSonuc.textContent = "";
+
+    const alanlar = Object.keys(kurallar).map((ad) => form.elements[ad]);
+    const gecerli = alanlar.map(alaniKontrolEt).every(Boolean);
+
+    if (!gecerli) {
+      alanlar.find((a) => a.getAttribute("aria-invalid") === "true").focus();
+      return;
+    }
+
+    // Bal küpü: görünmeyen _gotcha alanı doluysa gönderen bottur.
+    // Formspree'ye hiç gönderilmez (kota harcanmaz), bota başarılı gibi görünür.
+    if (form.elements._gotcha.value) {
+      sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
+      form.reset();
+      return;
+    }
+
+    gonderDugme.disabled = true;
+    gonderDugme.textContent = "Gönderiliyor…";
+
+    const veri = new FormData(form);
+    veri.append("email", form.elements.eposta.value.trim()); // Formspree'de "Yanıtla" gönderene gitsin
+
+    try {
+      const yanit = await fetch(form.action, {
+        method: "POST",
+        body: veri,
+        headers: { Accept: "application/json" },
+      });
+      if (!yanit.ok) throw new Error("Formspree yanıtı: " + yanit.status);
+
+      sonucGoster("İlginiz için teşekkür ederiz. Mesajınız bize ulaştı. En kısa sürede tarafınıza dönüş yapılacaktır.", false);
+      form.reset();
+    } catch (hata) {
+      sonucGoster("Gönderilemedi, tekrar deneyin.", true);
+    } finally {
+      gonderDugme.disabled = false;
+      gonderDugme.textContent = gonderYazisi;
+    }
+  });
+}
 
 // ---------- Alt bilgideki yıl ----------
-document.getElementById("yil").textContent = new Date().getFullYear();
+const yil = document.getElementById("yil");
+if (yil) yil.textContent = new Date().getFullYear();
+
+// ---------- Çevrimdışı çalışma (service worker) ----------
+// sw.js kök klasörde durur; sayfa alt klasörde olsa da main.js'in
+// adresinden kök klasör bulunur. file:// ile açılan sayfada çalışmaz.
+if ("serviceWorker" in navigator && document.currentScript) {
+  const kok = document.currentScript.src.replace(/js\/main\.js.*$/, "");
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register(kok + "sw.js").catch(() => {});
+  });
+}

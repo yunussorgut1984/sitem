@@ -1,0 +1,168 @@
+/* =========================================================
+   Oyunlar - ortak stiller
+   style.css'teki renk değişkenlerini ve düğmeleri kullanır.
+   ========================================================= */
+
+/* ---------- Oyunlar ana sayfası ---------- */
+.oyun-kart { display: flex; flex-direction: column; }
+.oyun-kart .hizmet__ikon { font-size: 1.8rem; line-height: 1; }
+.oyun-kart h2 { font-size: 1.35rem; margin-bottom: .4em; }
+.oyun-kart p { flex-grow: 1; }
+.oyun-kart .oyun-kart__tuslar { font-size: .9rem; margin-top: 12px; color: var(--gri); }
+.oyun-kart .dugme { margin-top: 20px; align-self: flex-start; }
+.cevrimdisi-not {
+  max-width: 960px; margin: 40px auto 0; padding: 18px 24px; border-radius: var(--yaricap);
+  background: var(--ana-acik); color: var(--ana-koyu); font-size: .97rem; text-align: center;
+}
+.cevrimdisi-not p { margin: 0; }
+
+/* ---------- Oyun sayfası iskeleti ---------- */
+.oyun { padding: 40px 0 88px; }
+.oyun__geri { display: inline-block; font-weight: 600; margin-bottom: 16px; }
+.oyun__geri:hover { text-decoration: underline; }
+.oyun__baslik { margin-bottom: 28px; }
+.oyun__baslik p { color: var(--gri); max-width: 680px; margin: 0; }
+
+.oyun__alan { display: grid; grid-template-columns: auto minmax(240px, 1fr); gap: 40px; align-items: start; }
+.oyun__panel { display: flex; flex-direction: column; gap: 20px; }
+
+.oyun__dugmeler { display: flex; flex-wrap: wrap; gap: 10px; }
+.oyun__bilgi { display: flex; flex-wrap: wrap; gap: 8px 24px; color: var(--gri); font-size: .97rem; }
+.oyun__bilgi strong { color: var(--yazi); font-variant-numeric: tabular-nums; }
+
+.oyun__sonuc { margin: 0; padding: 14px 18px; border-radius: 12px; font-weight: 600; background: var(--ana-acik); color: var(--basari); }
+.oyun__sonuc:empty { display: none; }
+.oyun__sonuc--hata { background: #FBE3E0; color: var(--hata); }
+
+.oyun__secim { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: .97rem; }
+.oyun__secim select {
+  font: 500 .97rem var(--font); color: var(--yazi); background: var(--beyaz);
+  border: 1.5px solid var(--cizgi-koyu); border-radius: 10px; padding: 8px 12px; cursor: pointer;
+}
+
+.nasil { background: var(--zemin-acik); border: 1px solid var(--cizgi); border-radius: var(--yaricap); padding: 14px 20px; font-size: .95rem; }
+.nasil summary { font-weight: 700; cursor: pointer; }
+.nasil ul { list-style: disc; padding-left: 20px; margin-top: 10px; color: var(--gri); }
+.nasil li + li { margin-top: 4px; }
+kbd {
+  font: 600 .82em var(--font); background: var(--beyaz); border: 1px solid var(--cizgi-koyu);
+  border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; color: var(--yazi);
+}
+
+/* Satırlar yalnızca ekran okuyucular içindir; görünümde hücreler doğrudan ızgaraya dizilir */
+.tablo-satir { display: contents; }
+
+/* Tablolardaki hücrelerin ortak odak görünümü (taşmayı önlemek için içe doğru) */
+.tablo-hucre:focus { outline: none; }
+.tablo-hucre:focus-visible { outline: 3px solid var(--vurgu); outline-offset: -3px; border-radius: 0; z-index: 1; }
+
+/* ---------- Sudoku ---------- */
+.sudoku {
+  display: grid; grid-template-columns: repeat(9, 1fr);
+  width: min(468px, calc(100vw - 32px)); aspect-ratio: 1;
+  border: 3px solid var(--yazi); border-radius: 10px; overflow: hidden;
+  background: var(--beyaz); user-select: none; -webkit-user-select: none;
+}
+.sudoku__hucre {
+  position: relative; display: grid; place-items: center; cursor: pointer;
+  font: 600 clamp(1.05rem, 4.6vw, 1.55rem)/1 var(--font); color: var(--ana);
+  border-right: 1px solid var(--cizgi-koyu); border-bottom: 1px solid var(--cizgi-koyu);
+}
+.sudoku__hucre[data-sutun="2"], .sudoku__hucre[data-sutun="5"] { border-right: 2px solid var(--yazi); }
+.sudoku__hucre[data-satir="2"], .sudoku__hucre[data-satir="5"] { border-bottom: 2px solid var(--yazi); }
+.sudoku__hucre[data-sutun="8"] { border-right: 0; }
+.sudoku__hucre[data-satir="8"] { border-bottom: 0; }
+.sudoku__hucre--sabit { color: var(--yazi); font-weight: 800; background: var(--zemin-acik); cursor: default; }
+.sudoku__hucre--vurgu { background: #F1F5EF; }
+.sudoku__hucre--ayni { background: var(--ana-acik); }
+.sudoku__hucre--secili { background: #CFE0C9; }
+.sudoku__hucre--yanlis { color: var(--hata); background: #FBE3E0; }
+
+.rakam-tuslari { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-width: 320px; }
+.rakam-tuslari button {
+  font: 700 1.15rem/1 var(--font); color: var(--yazi); background: var(--beyaz);
+  border: 1.5px solid var(--cizgi-koyu); border-radius: 10px; padding: 12px 0; cursor: pointer;
+  transition: background var(--gecis), border-color var(--gecis);
+}
+.rakam-tuslari button:hover { background: var(--ana-acik); border-color: var(--ana); }
+.rakam-tuslari .rakam-tuslari__sil { font-size: .9rem; }
+
+/* ---------- Kayan sayı bulmacası ---------- */
+.kayan {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+  width: min(380px, calc(100vw - 32px)); aspect-ratio: 1; padding: 8px;
+  background: var(--cizgi); border-radius: 18px;
+}
+.kayan__kare {
+  display: grid; place-items: center; border: 0; border-radius: 12px; cursor: pointer;
+  font: 800 clamp(1.3rem, 6vw, 2rem)/1 var(--font-baslik); color: var(--beyaz); background: var(--ana);
+  box-shadow: 0 4px 0 var(--ana-koyu); transition: transform .12s ease, background var(--gecis);
+}
+.kayan__kare:hover { transform: translateY(-2px); }
+.kayan__kare--yerinde { background: var(--ana-koyu); box-shadow: 0 4px 0 #2F402B; }
+.kayan__kare--bos { visibility: hidden; }
+.kayan__kare:focus-visible { outline: 3px solid var(--vurgu); outline-offset: 2px; }
+.kayan--bitti .kayan__kare { background: var(--basari); }
+
+/* ---------- Kelime avı ---------- */
+.kelime {
+  display: grid; grid-template-columns: repeat(10, 1fr);
+  width: min(480px, calc(100vw - 32px)); aspect-ratio: 1;
+  background: var(--beyaz); border: 2px solid var(--cizgi-koyu); border-radius: 12px; overflow: hidden;
+  user-select: none; -webkit-user-select: none; touch-action: none;
+}
+.kelime__harf {
+  display: grid; place-items: center; cursor: pointer;
+  font: 700 clamp(.95rem, 4vw, 1.3rem)/1 var(--font); color: var(--yazi);
+  transition: background .12s ease;
+}
+.kelime__harf--bulundu { background: var(--ana-acik); color: var(--ana-koyu); }
+.kelime__harf--baslangic { background: var(--seftali); box-shadow: inset 0 0 0 2px var(--vurgu); }
+.kelime__harf--secim { background: var(--seftali); }
+.kelime__harf--hatali { background: #FBE3E0; color: var(--hata); }
+
+.kelime-listesi { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 20px; font-weight: 600; }
+.kelime-listesi li { padding: 4px 0; border-bottom: 1px dashed var(--cizgi-koyu); }
+.kelime-listesi li.bulundu { color: var(--gri); text-decoration: line-through; text-decoration-color: var(--ana); text-decoration-thickness: 2px; }
+.kelime-listesi li.bulundu::after { content: " ✔"; color: var(--basari); text-decoration: none; display: inline-block; }
+
+/* ---------- Mini çengel bulmaca ---------- */
+.cengel {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  width: min(360px, calc(100vw - 32px)); aspect-ratio: 1;
+  border: 3px solid var(--yazi); border-radius: 10px; overflow: hidden; background: var(--yazi); gap: 2px;
+}
+.cengel__hucre { position: relative; background: var(--beyaz); }
+.cengel__hucre--siyah { background: var(--yazi); }
+.cengel__hucre input {
+  width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background: transparent; caret-color: transparent;
+  text-align: center; font: 700 clamp(1.3rem, 6vw, 1.9rem)/1 var(--font); color: var(--yazi); cursor: pointer;
+}
+.cengel__no { position: absolute; top: 3px; left: 5px; font-size: .7rem; font-weight: 700; color: var(--gri); pointer-events: none; }
+.cengel__hucre--kelimede { background: var(--ana-acik); }
+.cengel__hucre--aktif { background: #CFE0C9; }
+.cengel__hucre--yanlis input { color: var(--hata); }
+.cengel__hucre--yanlis { background: #FBE3E0; }
+
+.ipuclari { display: grid; gap: 20px; }
+.ipuclari h2 { font-size: 1.05rem; margin-bottom: 8px; }
+.ipuclari li + li { margin-top: 4px; }
+.ipuclari button {
+  display: flex; gap: 8px; width: 100%; text-align: left; cursor: pointer;
+  font: 400 .97rem/1.5 var(--font); color: var(--yazi); background: none;
+  border: 0; border-radius: 8px; padding: 6px 10px;
+}
+.ipuclari button:hover { background: var(--zemin-acik); }
+.ipuclari button strong { min-width: 1.4em; }
+.ipuclari .ipucu--aktif { background: var(--ana-acik); }
+
+/* ---------- Ekran boyutuna uyum ---------- */
+@media (max-width: 900px) {
+  .oyun__alan { grid-template-columns: 1fr; gap: 28px; }
+  .sudoku, .kayan, .kelime, .cengel { justify-self: center; }
+  .rakam-tuslari { max-width: none; width: min(468px, 100%); justify-self: center; }
+}
+@media (max-width: 640px) {
+  .oyun { padding: 28px 0 72px; }
+  .kelime-listesi { grid-template-columns: repeat(2, 1fr); }
+}

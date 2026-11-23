@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sudoku | Oyunlar | Yunus Sorgut</title>
+  <meta name="description" content="Tarayıcıda ücretsiz Sudoku. Kolay, orta ve zor seviyede her seferinde yeni tablo; klavye ve fareyle oynanır, çözümünüzü kontrol eder, internetsiz de çalışır.">
+  <meta name="author" content="Yunus Sorgut">
+  <meta name="theme-color" content="#587152">
+
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/shantell-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/oyunlar.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <a class="atla" href="#icerik">İçeriğe geç</a>
+
+  <!-- ========== ÜST MENÜ ========== -->
+  <header class="ust" id="ust">
+    <div class="kap ust__ic">
+      <a class="marka" href="../index.html" aria-label="Yunus Sorgut - anasayfa">
+        <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu: içinde imleç oku bulunan adaçayı yeşili su damlası" width="40" height="40">
+        <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+      </a>
+
+      <button class="menu-dugme" id="menuDugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Ana menü">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html" aria-current="page">Oyunlar</a>
+        <a href="../index.html#iletisim" class="dugme dugme--kucuk">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik" class="oyun">
+    <div class="kap">
+      <a href="../oyunlar.html" class="oyun__geri">← Tüm oyunlar</a>
+      <header class="oyun__baslik">
+        <h1>Sudoku</h1>
+        <p>Her satırda, her sütunda ve her 3×3 kutuda 1'den 9'a kadar rakamlar yalnızca bir kez geçmeli.</p>
+      </header>
+
+      <div class="oyun__alan">
+        <div class="sudoku" id="sudoku" role="grid" aria-label="Sudoku tablosu, 9 satır 9 sütun"></div>
+
+        <div class="oyun__panel">
+          <label class="oyun__secim">Seviye
+            <select id="seviye">
+              <option value="kolay">Kolay</option>
+              <option value="orta" selected>Orta</option>
+              <option value="zor">Zor</option>
+            </select>
+          </label>
+
+          <div class="oyun__bilgi">
+            <span>Süre: <strong id="sure">0:00</strong></span>
+            <span>Boş hücre: <strong id="bos">0</strong></span>
+          </div>
+
+          <div class="rakam-tuslari" id="rakamTuslari" aria-label="Seçili hücreye rakam yaz">
+            <button type="button" data-rakam="1">1</button>
+            <button type="button" data-rakam="2">2</button>
+            <button type="button" data-rakam="3">3</button>
+            <button type="button" data-rakam="4">4</button>
+            <button type="button" data-rakam="5">5</button>
+            <button type="button" data-rakam="6">6</button>
+            <button type="button" data-rakam="7">7</button>
+            <button type="button" data-rakam="8">8</button>
+            <button type="button" data-rakam="9">9</button>
+            <button type="button" data-rakam="0" class="rakam-tuslari__sil" aria-label="Seçili hücreyi sil">Sil</button>
+          </div>
+
+          <div class="oyun__dugmeler">
+            <button type="button" class="dugme dugme--kucuk" id="kontrol">Kontrol et</button>
+            <button type="button" class="dugme dugme--kucuk dugme--cizgi" id="yeni">Yeni oyun</button>
+            <button type="button" class="dugme dugme--kucuk dugme--cizgi" id="temizle">Temizle</button>
+          </div>
+
+          <p class="oyun__sonuc" id="sonuc" role="status" aria-live="polite"></p>
+
+          <details class="nasil">
+            <summary>Nasıl oynanır?</summary>
+            <ul>
+              <li><strong>Fare:</strong> Bir hücreye tıklayın, sonra alttaki rakam tuşlarıyla yazın.</li>
+              <li><strong>Klavye:</strong> <kbd>Tab</kbd> ile tabloya girin, <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> ile gezin, <kbd>1</kbd>–<kbd>9</kbd> ile yazın, <kbd>Backspace</kbd> ya da <kbd>Delete</kbd> ile silin.</li>
+              <li>Koyu renkli rakamlar başlangıçta verilir ve değiştirilemez.</li>
+              <li><strong>Kontrol et</strong> yanlış hücreleri kırmızıyla gösterir. Tablo dolunca kontrol kendiliğinden yapılır.</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== ALT BİLGİ ========== -->
+  <footer class="alt">
+    <div class="kap alt__ic">
+      <div>
+        <a class="marka marka--alt" href="../index.html">
+          <img src="../images/logo.svg" alt="Yunus Sorgut sitesinin logosu" width="36" height="36" loading="lazy">
+          <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+        </a>
+        <p>Küçük araçlar, büyük kolaylık.</p>
+      </div>
+      <nav aria-label="Alt menü" class="alt__menu">
+        <a href="../index.html#hakkimda">Hakkımda</a>
+        <a href="../index.html#projeler">Projeler</a>
+        <a href="../oyunlar.html">Oyunlar</a>
+        <a href="../index.html#iletisim">İletişim</a>
+        <a href="https://github.com/yunussorgut1984" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="kap alt__son">
+      <p>© <span id="yil">2026</span> Yunus Sorgut. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/oyunlar/ortak.js"></script>
+  <script src="../js/oyunlar/sudoku.js"></script>
+</body>
+</html>

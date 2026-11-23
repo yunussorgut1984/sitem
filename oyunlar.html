@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oyunlar | Yunus Sorgut</title>
+  <meta name="description" content="Tarayıcıda ücretsiz oynanan zekâ oyunları: Sudoku, kayan sayı bulmacası, kelime avı ve mini çengel bulmaca. Klavye ve fareyle oynanır, internetsiz de çalışır.">
+  <meta name="author" content="Yunus Sorgut">
+  <meta name="theme-color" content="#587152">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/shantell-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/oyunlar.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+  <a class="atla" href="#icerik">İçeriğe geç</a>
+
+  <!-- ========== ÜST MENÜ ========== -->
+  <header class="ust" id="ust">
+    <div class="kap ust__ic">
+      <a class="marka" href="index.html" aria-label="Yunus Sorgut - anasayfa">
+        <img src="images/logo.svg" alt="Yunus Sorgut sitesinin logosu: içinde imleç oku bulunan adaçayı yeşili su damlası" width="40" height="40">
+        <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+      </a>
+
+      <button class="menu-dugme" id="menuDugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Ana menü">
+        <a href="index.html#hakkimda">Hakkımda</a>
+        <a href="index.html#projeler">Projeler</a>
+        <a href="oyunlar.html" aria-current="page">Oyunlar</a>
+        <a href="index.html#iletisim" class="dugme dugme--kucuk">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik">
+    <section class="bolum bolum--acik">
+      <div class="kap">
+        <header class="bolum__baslik">
+          <span class="ust-baslik">Oyunlar</span>
+          <h1>Biraz da kafa yoralım</h1>
+          <p>Tarayıcıda oynanan dört küçük zekâ oyunu. Hepsi klavyeyle ya da fareyle oynanır, bitirince sonucunuzu kontrol edebilirsiniz.</p>
+        </header>
+
+        <div class="kartlar kartlar--2">
+          <article class="hizmet oyun-kart">
+            <span class="hizmet__ikon" aria-hidden="true">🔢</span>
+            <h2>Sudoku</h2>
+            <p>9×9 tabloyu her satır, sütun ve 3×3 kutuda 1–9 rakamları birer kez geçecek şekilde doldurun. Her oyunda yeni tablo; Kolay, Orta ve Zor seviye.</p>
+            <p class="oyun-kart__tuslar">Ok tuşları ile gezin, rakamla yazın.</p>
+            <a href="oyunlar/sudoku.html" class="dugme dugme--kucuk">Oyna →</a>
+          </article>
+          <article class="hizmet oyun-kart">
+            <span class="hizmet__ikon" aria-hidden="true">🧩</span>
+            <h2>Kayan Sayı Bulmacası</h2>
+            <p>Karışık 15 kareyi boşluğa kaydırarak 1'den 15'e sıraya dizin. Hamle sayınız ve süreniz tutulur.</p>
+            <p class="oyun-kart__tuslar">Kareye tıklayın ya da ok tuşlarını kullanın.</p>
+            <a href="oyunlar/kayan-sayi.html" class="dugme dugme--kucuk">Oyna →</a>
+          </article>
+          <article class="hizmet oyun-kart">
+            <span class="hizmet__ikon" aria-hidden="true">🔍</span>
+            <h2>Kelime Avı</h2>
+            <p>Harf tablosuna gizlenmiş 8 Türkçe kelimeyi bulun. Kelimeler yatay, dikey, çapraz; ileri ya da geri yazılmış olabilir.</p>
+            <p class="oyun-kart__tuslar">Fareyle sürükleyin ya da Enter ile ilk ve son harfi seçin.</p>
+            <a href="oyunlar/kelime-avi.html" class="dugme dugme--kucuk">Oyna →</a>
+          </article>
+          <article class="hizmet oyun-kart">
+            <span class="hizmet__ikon" aria-hidden="true">✏️</span>
+            <h2>Mini Çengel Bulmaca</h2>
+            <p>5×5 küçük çengel bulmacayı soldan sağa ve yukarıdan aşağıya ipuçlarıyla çözün. Üç farklı bulmaca var.</p>
+            <p class="oyun-kart__tuslar">Harfleri yazın, Space ile yön değiştirin.</p>
+            <a href="oyunlar/cengel.html" class="dugme dugme--kucuk">Oyna →</a>
+          </article>
+        </div>
+
+        <div class="cevrimdisi-not">
+          <p>📶 Siteyi bir kez açtıktan sonra oyunlar <strong>internet bağlantısı olmadan da</strong> oynanabilir.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== ALT BİLGİ ========== -->
+  <footer class="alt">
+    <div class="kap alt__ic">
+      <div>
+        <a class="marka marka--alt" href="index.html">
+          <img src="images/logo.svg" alt="Yunus Sorgut sitesinin logosu" width="36" height="36" loading="lazy">
+          <span class="marka__yazi">Yunus Sorgut<small>Kişisel Site</small></span>
+        </a>
+        <p>Küçük araçlar, büyük kolaylık.</p>
+      </div>
+      <nav aria-label="Alt menü" class="alt__menu">
+        <a href="index.html#hakkimda">Hakkımda</a>
+        <a href="index.html#projeler">Projeler</a>
+        <a href="oyunlar.html">Oyunlar</a>
+        <a href="index.html#iletisim">İletişim</a>
+        <a href="https://github.com/yunussorgut1984" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+    <div class="kap alt__son">
+      <p>© <span id="yil">2026</span> Yunus Sorgut. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <a href="#ust" class="yukari" id="yukari" aria-label="Sayfanın başına dön">↑</a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
