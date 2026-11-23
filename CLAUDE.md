@@ -36,3 +36,12 @@ Her HTML sayfasında şunlar zorunludur:
 </body>
 </html>
 ```
+
+## Çevrimdışı Önbellek (sw.js)
+
+Site, `sw.js` (service worker) ile çevrimdışı çalışır. Bu yüzden:
+
+- Önbelleğe alınan bir site dosyası değiştiğinde `sw.js` içindeki `SURUM` değeri bir artırılır (`sitem-v1` → `sitem-v2` → `sitem-v3` ...). Bu dosyalar: HTML sayfaları, `css/`, `js/`, `images/`, `fonts/`. Sürüm artırma işi, değişikliğin yapıldığı commit'e dahil edilir.
+- Yalnızca `README.md`, `test.md`, `gunluk.md` gibi önbelleğe alınmayan dosyalar değiştiğinde sürüm artırılmaz.
+- Siteye yeni bir sayfa, CSS, JS, görsel ya da yazı tipi eklendiğinde dosyanın yolu `sw.js` içindeki `DOSYALAR` listesine de eklenir. Kullanılmayan bir dosya listeden çıkarılır.
+- Yapılan planda ve değişiklik sonrası özette sürümün hangi değere çıkarıldığı belirtilir.
