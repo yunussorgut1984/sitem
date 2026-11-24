@@ -29,6 +29,41 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") menuyuKapat();
 });
 
+// ---------- Koyu / açık tema düğmesi ----------
+// İlk tema <head> içindeki betikte seçilir (kayıtlı seçim, yoksa sistem tercihi).
+// Düğmeye basılınca seçim localStorage'a kaydedilir; seçim yapılmamışsa site sistemi izler.
+const temaDugme = document.getElementById("temaDugme");
+const sistemKoyu = window.matchMedia("(prefers-color-scheme: dark)");
+const temaRengi = document.querySelector('meta[name="theme-color"]');
+
+function kayitliTema() {
+  try { return localStorage.getItem("tema"); } catch (e) { return null; }
+}
+
+function temayiUygula(tema) {
+  const koyu = tema === "koyu";
+  document.documentElement.setAttribute("data-tema", koyu ? "koyu" : "acik");
+  if (temaRengi) temaRengi.setAttribute("content", koyu ? "#1A1D2B" : "#587152");
+  if (temaDugme) {
+    temaDugme.setAttribute("aria-pressed", String(koyu));
+    temaDugme.title = koyu ? "Açık temaya geç" : "Koyu temaya geç";
+  }
+}
+
+temayiUygula(document.documentElement.getAttribute("data-tema") || (sistemKoyu.matches ? "koyu" : "acik"));
+
+if (temaDugme) {
+  temaDugme.addEventListener("click", () => {
+    const yeni = document.documentElement.getAttribute("data-tema") === "koyu" ? "acik" : "koyu";
+    temayiUygula(yeni);
+    try { localStorage.setItem("tema", yeni); } catch (e) { /* gizli sekme vb.: kaydedilemese de çalışır */ }
+  });
+}
+
+sistemKoyu.addEventListener("change", (e) => {
+  if (!kayitliTema()) temayiUygula(e.matches ? "koyu" : "acik");
+});
+
 // ---------- Kaydırınca üst menü gölgesi ve yukarı butonu ----------
 const ust = document.getElementById("ust");
 const yukari = document.getElementById("yukari");
