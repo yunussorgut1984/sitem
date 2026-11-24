@@ -4,7 +4,7 @@
 // böylece eski önbellek silinir, yenisi kurulur.
 // =========================================================
 
-const SURUM = "sitem-v1";
+const SURUM = "sitem-v2";
 
 const DOSYALAR = [
   "./",
