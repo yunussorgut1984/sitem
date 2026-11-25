@@ -6,7 +6,6 @@ Bu dosyada proje sırasında yapılan çalışmalar, Claude'a sorulan sorular, a
 
 ## 23.11.2026 – Formspree adresinin herkese açık depoda durması
 
-**Ödev:** Formspree adresi herkese açık depoda duracak. Claude'a "Bu adres depoda açık durursa ne olur, risk var mı?" diye sorulacak ve cevap günlüğe yazılacak.
 
 **Soru:** Formspree adresi (`https://formspree.io/f/xgakpvak`) herkese açık depoda açık durursa ne olur, risk var mı?
 
@@ -27,6 +26,21 @@ Bu dosyada proje sırasında yapılan çalışmalar, Claude'a sorulan sorular, a
 **Yapılan:** Forma bal küpü alanı eklendi (commit `10aff76`). Görünmeyen `_gotcha` alanı doluysa mesaj Formspree'ye hiç gönderilmiyor, bota yine teşekkür mesajı gösteriliyor. Böylece kota da harcanmıyor.
 
 **Öğrendiklerim:** Sitede herkesin görebildiği her bilgi gizli değildir ve gizli sayılmamalıdır. Asıl önemli olan, açık duran bir bilginin kötüye kullanılırsa neye yol açacağını bilmek ve buna karşı önlem almaktır. Şifre ve API anahtarları ise depoya asla konmamalıdır.
+
+---
+
+## 25.11.2026 – Hata ayıklama pratiği
+
+**Soru:** Claude'dan `js/main.js` ve `css/style.css` içinde birer satırı bilerek bozması istendi. Amaç hatayı geliştirici araçlarıyla bulmaktı.
+
+**Cevabın özeti:**
+
+- **JavaScript:** `temayiUygula` yerine `temayiUygla` yazıldı. Tema düğmesine basınca konsolda `ReferenceError` çıkar ve tema değişmez.
+- **CSS:** `.dugme` kuralında `background` yerine `backgroud` yazıldı. Konsola hata düşmez. Yeşil düğmelerin zemini kaybolur. Hata, Elements → Styles panelinde üstü çizili satır olarak görünür.
+
+**Yapılan:** İki hata da `pratik/hata-ayiklama` dalında yapıldı ve `git restore` ile geri alındı.
+
+**Öğrendiklerim:** JavaScript hataları Console'da, CSS hataları Elements → Styles panelinde aranır.
 
 ---
 
