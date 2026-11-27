@@ -141,6 +141,11 @@
     }
     const yazi = liste.map((i) => harfler[i]).join("");
     const ters = Array.from(yazi).reverse().join("");
+    const onceden = aranan.find((x) => x.bulundu && (x.kelime === yazi || x.kelime === ters));
+    if (onceden) {
+      Oyun.sonuc(sonucEl, `"${onceden.kelime}" zaten bulundu.`);
+      return;
+    }
     const hedef = aranan.find((x) => !x.bulundu && (x.kelime === yazi || x.kelime === ters));
     if (!hedef) {
       hataliGoster(liste);

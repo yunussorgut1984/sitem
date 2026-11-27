@@ -232,10 +232,21 @@
   }
 
   // ---------- Klavye, yazma ve fare ----------
+  // Değişiklikten önceki harfi sakla; yeni yazılan harfi ondan ayırt etmek için
+  tabloEl.addEventListener("beforeinput", (e) => {
+    const g = e.target.closest("input");
+    if (g) g.dataset.onceki = g.value;
+  });
+
   tabloEl.addEventListener("input", (e) => {
     const g = e.target;
     if (bitti) return;
-    const ch = Array.from(g.value.toLocaleUpperCase("tr-TR")).filter((h) => HARFLER.has(h)).pop() || "";
+    const buyuk = (s) => Array.from((s || "").toLocaleUpperCase("tr-TR")).filter((h) => HARFLER.has(h));
+    const yazilan = buyuk(e.data);
+    const harfler = buyuk(g.value);
+    const onceki = g.dataset.onceki || "";
+    // Önce yeni yazılan harf; yoksa eski harften farklı olan; o da yoksa ilk harf
+    const ch = (yazilan.length === 1 ? yazilan[0] : harfler.find((h) => h !== onceki)) || harfler[0] || "";
     g.value = ch;
     kutular[Number(g.dataset.sira)].classList.remove("cengel__hucre--yanlis");
     sonucEl.textContent = "";
