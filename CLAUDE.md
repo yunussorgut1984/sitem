@@ -8,6 +8,7 @@ Bu dosya, Claude Code'un bu projede çalışırken uyacağı kuralları içerir.
 2. **Önce plan:** Kod yazmadan veya dosya değiştirmeden önce yapılacakların planı anlatılmalı ve kullanıcının onayı beklenmelidir. Onay gelmeden değişiklik yapılmaz.
 3. **Silme yasağı:** Hiçbir dosya silinmez. Bir dosyanın artık gerekmediği düşünülüyorsa bu kullanıcıya bildirilir, silme işlemi kullanıcıya bırakılır.
 4. **Test talimatı:** Her değişiklikten sonra, değişikliğin nasıl test edileceği adım adım anlatılmalıdır (örneğin hangi dosyanın tarayıcıda açılacağı, neye bakılacağı).
+5. **Özellik sonrası inceleme:** Her özellik bittikten sonra yeni bir oturum açılır (`/clear`) ve `/code-review` çalıştırılır. Çıkan bulgulardan en az 2'si düzeltilir. Düzeltmeler de 2. kurala uyar: önce plan anlatılır, onay beklenir. 2'den az bulgu çıkarsa bu kullanıcıya bildirilir.
 
 ## HTML Sayfa Standartları
 
