@@ -67,11 +67,18 @@ sistemKoyu.addEventListener("change", (e) => {
 // ---------- Kaydırınca üst menü gölgesi ve yukarı butonu ----------
 const ust = document.getElementById("ust");
 const yukari = document.getElementById("yukari");
+const ilerleme = document.getElementById("ilerleme");
 
 function kaydirmaKontrol() {
   const y = window.scrollY;
   if (ust) ust.classList.toggle("kaydi", y > 10);
   if (yukari) yukari.classList.toggle("gorunur", y > 600);
+  if (ilerleme) {
+    // Okuma ilerlemesi: 0 (en üst) ile 1 (en alt) arasında
+    const toplam = document.documentElement.scrollHeight - window.innerHeight;
+    const oran = toplam > 0 ? Math.min(y / toplam, 1) : 0;
+    ilerleme.style.transform = `scaleX(${oran})`;
+  }
 }
 window.addEventListener("scroll", kaydirmaKontrol, { passive: true });
 kaydirmaKontrol();

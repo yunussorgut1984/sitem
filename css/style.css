@@ -433,6 +433,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .alt__not { color: var(--alt-soluk); }
 .alt__not a { color: var(--alt-yazi); text-decoration: underline; }
 
+/* ---------- Okuma ilerleme çubuğu ---------- */
+.ilerleme {
+  position: fixed; top: 0; left: 0; z-index: 150;
+  width: 100%; height: 3px; background: var(--ana);
+  transform: scaleX(0); transform-origin: left;
+  pointer-events: none;
+}
+
 /* ---------- Yukarı çık butonu ---------- */
 .yukari {
   position: fixed; right: 20px; bottom: 20px; z-index: 90;
